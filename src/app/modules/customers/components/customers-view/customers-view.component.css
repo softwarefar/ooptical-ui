@@ -1,0 +1,39 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 1e-09px;
+}
+
+.table-container {
+  overflow: auto;
+  position: relative;
+}
+
+form {
+  padding: 10px;
+}
+
+table {
+  width: 100%;
+}
+
+tr.detail-row {
+  height: 0;
+}
+
+tr.element-row:not(.expanded-row):hover {
+  background: #f5f5f5;
+}
+
+tr.element-row:not(.expanded-row):active {
+  background: #efefef;
+}
+
+.element-row td {
+  border-bottom-width: 0;
+}
+
+.element-detail {
+  overflow: hidden;
+  display: flex;
+}

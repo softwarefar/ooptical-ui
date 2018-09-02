@@ -1,0 +1,41 @@
+<form>
+  <mat-form-field fxFlex>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field>
+</form>
+<div fxFlex class="table-container" fxLayout="column">
+  <table mat-table matSort fxFlex [dataSource]="dataSource" multiTemplateDataRows>
+
+    <!-- FirstName Column -->
+    <ng-container matColumnDef="firstName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> FirstName</th>
+      <td mat-cell *matCellDef="let element"> {{element.firstName}}</td>
+    </ng-container>
+
+    <!-- LastName Column -->
+    <ng-container matColumnDef="lastName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> LastName</th>
+      <td mat-cell *matCellDef="let element"> {{element.lastName}}</td>
+    </ng-container>
+
+    <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+    <ng-container cdkColumnDef="expandedDetail">
+      <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
+        <div class="element-detail" [@detailExpand]="element.id == expandedIdElement ? 'expanded' : 'collapsed'">
+          expended
+        </div>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+        [class.expanded-row]="expandedIdElement === row.id"
+        (click)="expendElement(row.id)">
+    </tr>
+    <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="detail-row"></tr>
+  </table>
+  <button mat-fab class="floating-bottom-right" (click)="openCreateNewCustomerDialog()">
+    <i class="fas fa-plus"></i>
+  </button>
+</div>
+<a [routerLink]="'/customers/5'">HHF</a>

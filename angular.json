@@ -128,5 +128,12 @@
       }
     }
   },
-  "defaultProject": "ooptical-ui"
+  "defaultProject": "ooptical-ui",
+  "schematics": {
+    "@schematics/angular": {
+      "component": {
+        "spec": false
+      }
+    }
+  }
 }

@@ -1,0 +1,15 @@
+<h1 mat-dialog-title *ngIf="!!customer.id">Edit customer</h1>
+<h1 mat-dialog-title *ngIf="!customer.id">Create customer</h1>
+<div mat-dialog-content fxLayout="column">
+  <mat-form-field fxFlex>
+    <input cdkFocusInitial matInput placeholder="FirstName" [(ngModel)]="customer.firstName">
+  </mat-form-field>
+  <mat-form-field fxFlex>
+    <input matInput placeholder="LastName" [(ngModel)]="customer.lastName">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <span class="flex-spacer"></span>
+  <button mat-button [mat-dialog-close]>Cancel</button>
+  <button mat-button [mat-dialog-close]="customer">Save</button>
+</div>

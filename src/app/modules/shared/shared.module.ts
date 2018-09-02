@@ -9,6 +9,7 @@ import {MaterialModule} from './mat.module';
 import {SHARED_COMPONENTS} from './components';
 import {SHARED_SERVICES} from './services';
 import {SHARED_PIPES} from './pipes';
+import {FlexLayoutModule} from '@angular/flex-layout';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import {SHARED_PIPES} from './pipes';
     MaterialModule,
     SHARED_COMPONENTS,
     SHARED_PIPES,
+    FlexLayoutModule,
     ConfigModule
   ],
   imports: [
@@ -31,6 +33,7 @@ import {SHARED_PIPES} from './pipes';
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
+    FlexLayoutModule,
     ConfigModule
   ],
   providers: [
