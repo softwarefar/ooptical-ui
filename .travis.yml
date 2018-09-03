@@ -11,7 +11,7 @@ before_script:
 - npm install
 script:
 - git checkout master
-- ng build --base-href .
+- ng build --prod --base-href .
 - cp dist/ooptical-ui/index.html dist/ooptical-ui/404.html
 deploy:
   provider: firebase
