@@ -11,6 +11,7 @@ branches:
   only:
   - master
 before_script:
+- npm i -g firebase-tools
 - npm install
 script:
 - git checkout master
