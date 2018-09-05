@@ -11,5 +11,5 @@
 <div mat-dialog-actions>
   <span class="flex-spacer"></span>
   <button mat-button [mat-dialog-close]>Cancel</button>
-  <button mat-button [mat-dialog-close]="customer">Save</button>
+  <button mat-button [mat-dialog-close]="{customer: customer}">Save</button>
 </div>

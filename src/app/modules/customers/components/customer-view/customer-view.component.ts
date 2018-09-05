@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
 import {Customer} from '../objects/customer';
 import {CustomerService} from '../../services';
 import {DynTabService} from '../../../../dyn-tab-service';
 import {NavLink} from '../../../../objects/nav-link';
+import {AngularFirestore} from 'angularfire2/firestore';
+import {flatMap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-customer-view',
@@ -15,18 +17,23 @@ export class CustomerViewComponent implements OnInit {
   constructor(
     private customerService: CustomerService,
     private dynTabService: DynTabService,
-    private route: ActivatedRoute
-  ) { }
-
-  ngOnInit() {
-    this.route.params.subscribe((params: Params) => {
-      this.load(+params.id);
-    });
+    private route: ActivatedRoute,
+    private afs: AngularFirestore
+  ) {
   }
 
-  load(id: number) {
-    this.customerService.find(id).subscribe((customer: Customer) => {
-      this.dynTabService.addNavLinkEvent.next(this.getNavLink(customer));
+  customer: Customer;
+
+  ngOnInit() {
+    this.route.params.pipe(
+      flatMap((params: Params) => {
+        return this.afs.collection<Customer>('customers').doc(`${params.id}`).valueChanges();
+      })
+    ).subscribe((customer: Customer) => {
+      if (!this.customer || customer.id !== this.customer.id) {
+        this.dynTabService.addNavLinkEvent.next(this.getNavLink(customer));
+      }
+      this.customer = customer;
     });
   }
 

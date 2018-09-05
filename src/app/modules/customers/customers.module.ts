@@ -5,6 +5,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {CUSTOMERS_COMPONENTS, CustomersViewComponent, CustomerViewComponent} from './components';
 import {CUSTOMERS_SERVICES} from './services';
 import {CUSTOMERS_COMPONENTS_DIALOGS, CUSTOMERS_DIALOGS} from './dialogs';
+import { CustomerAddButtonComponent } from './components/customers-view/customer-add-button/customer-add-button.component';
 
 const customersRoutes: Routes = [
   {path: '', component: CustomersViewComponent},
@@ -12,7 +13,7 @@ const customersRoutes: Routes = [
 ];
 
 @NgModule({
-  declarations: [CUSTOMERS_COMPONENTS, CUSTOMERS_DIALOGS, CUSTOMERS_COMPONENTS_DIALOGS],
+  declarations: [CUSTOMERS_COMPONENTS, CUSTOMERS_DIALOGS, CUSTOMERS_COMPONENTS_DIALOGS, CustomerAddButtonComponent],
   exports: [RouterModule],
   imports: [
     CommonModule,

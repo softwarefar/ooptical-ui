@@ -3,19 +3,19 @@ service cloud.firestore {
     match /{document=**} {
   		allow read: if exists(/databases/$(database)/documents/roles/$(request.auth.token.email));
 		}
-    match /document/customers {
+    match /customers/{customer} {
       allow write: if exists(/databases/$(database)/documents/roles/$(request.auth.token.email));
 	  }
-    match /document/products {
+    match /products/{product} {
       allow write: if exists(/databases/$(database)/documents/roles/$(request.auth.token.email));
 	  }
-    match /document/providers {
+    match /providers/{provider} {
       allow write: if exists(/databases/$(database)/documents/roles/$(request.auth.token.email));
 	  }
-    match /document/stores {
+    match /stores/{store} {
       allow write: if get(/databases/$(database)/documents/roles/$(request.auth.token.email)).data.admin == true;
 	  }
-    match /document/roles {
+    match /roles/{role} {
       allow write: if get(/databases/$(database)/documents/roles/$(request.auth.token.email)).data.admin == true;
 	  }
   }

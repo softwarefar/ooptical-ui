@@ -1,11 +1,14 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {MatDialog, MatDialogRef, MatSort, MatTableDataSource} from '@angular/material';
+import {MatDialog, MatSort, MatTableDataSource} from '@angular/material';
 import {Customer} from '../objects/customer';
 import {animate, state, style, transition, trigger} from '@angular/animations';
+import {AngularFirestore} from 'angularfire2/firestore';
+import {fromPromise} from 'rxjs/internal-compatibility';
 import {CustomerEditDialogComponent} from '../../dialogs/customer-edit-dialog/customer-edit-dialog.component';
 import {CustomerEditData} from '../../dialogs/dialog-data';
 import {CustomerEditResult} from '../../dialogs/dialog-result';
-import {AngularFirestore} from 'angularfire2/firestore';
+import {flatMap} from 'rxjs/operators';
+import {throwError} from 'rxjs';
 
 @Component({
   selector: 'app-customers-view',
@@ -22,20 +25,19 @@ import {AngularFirestore} from 'angularfire2/firestore';
 export class CustomersViewComponent implements OnInit {
 
   constructor(
-    public dialog: MatDialog,
+    private dialog: MatDialog,
     private afs: AngularFirestore
   ) {
   }
 
   dataSource: MatTableDataSource<Customer> = new MatTableDataSource<Customer>();
-  displayedColumns: string[] = ['lastName', 'firstName'];
+  displayedColumns: string[] = [/*'id', */'lastName', 'firstName', 'actions'];
   expandedIdElement: number = NaN;
 
   @ViewChild(MatSort)
   sort: MatSort;
 
   ngOnInit() {
-    console.log('CUSTOMERVIEWS');
     this.dataSource.data = [];
     this.afs.collection<Customer>('customers').valueChanges().subscribe((value: Customer[]) => {
       this.dataSource.data = value;
@@ -52,23 +54,32 @@ export class CustomersViewComponent implements OnInit {
     return true;
   };
 
-  openCreateNewCustomerDialog() {
-    const dialogRef: MatDialogRef<CustomerEditDialogComponent, CustomerEditResult> =
-      this.dialog.open<CustomerEditDialogComponent, CustomerEditData, CustomerEditResult>(CustomerEditDialogComponent, {
-        width: '500px',
-        data: {customer: {id: null, firstName: '', lastName: ''}}
-      });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    });
-  }
-
   expendElement(id: number) {
-    if(this.expandedIdElement === id) {
+    if (this.expandedIdElement === id) {
       this.expandedIdElement = NaN;
     } else {
       this.expandedIdElement = id;
     }
+  }
+
+  editCustomer(element: Customer) {
+    this.dialog.open<CustomerEditDialogComponent, CustomerEditData, CustomerEditResult>(CustomerEditDialogComponent, {
+      width: '500px',
+      data: {customer: element}
+    }).afterClosed().pipe(flatMap((result: CustomerEditResult) => {
+      if (!!result) {
+        return fromPromise(this.afs.collection<Customer>('customers').doc(element.id).set(result.customer));
+      } else {
+        throwError(null);
+      }
+    })).subscribe(() => {
+      console.log('Customer updated');
+    });
+  }
+
+  deleteCustomer(element: Customer) {
+    fromPromise(this.afs.collection<Customer>('customers').doc(element.id).delete()).subscribe(() => {
+      console.log('Customer deleted');
+    });
   }
 }
