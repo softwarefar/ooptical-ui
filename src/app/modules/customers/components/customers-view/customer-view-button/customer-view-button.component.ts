@@ -1,5 +1,4 @@
 import {Component, Input} from '@angular/core';
-import {Customer} from '../../objects/customer';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({

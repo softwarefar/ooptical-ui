@@ -6,9 +6,22 @@ import {HttpClientModule} from '@angular/common/http';
 import {MaterialModule} from './mat.module';
 
 import {SHARED_COMPONENTS} from './components';
-import {SHARED_SERVICES} from './services';
 import {SHARED_PIPES} from './pipes';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {AngularFireModule} from 'angularfire2';
+import {environment} from '../../../environments/environment';
+import {AngularFirestoreModule} from 'angularfire2/firestore';
+import {AngularFireAuthModule} from 'angularfire2/auth';
+import {AngularFireStorageModule} from 'angularfire2/storage';
+import {RouterModule} from '@angular/router';
+
+const FIREBASE  = [
+  AngularFireModule,
+  AngularFirestoreModule,
+  AngularFireAuthModule,
+  AngularFireStorageModule,
+]
 
 
 @NgModule({
@@ -18,24 +31,28 @@ import {FlexLayoutModule} from '@angular/flex-layout';
   ],
   exports: [
     CommonModule,
+    FlexLayoutModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     MaterialModule,
+    RouterModule,
+    FIREBASE,
     SHARED_COMPONENTS,
-    SHARED_PIPES,
-    FlexLayoutModule
+    SHARED_PIPES
   ],
   imports: [
     CommonModule,
-    HttpClientModule,
+    FlexLayoutModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     MaterialModule,
-    FlexLayoutModule
+    RouterModule,
+    FIREBASE,
+
   ],
-  providers: [
-    SHARED_SERVICES
-  ],
+  providers: [],
 })
 export class SharedModule {
 }

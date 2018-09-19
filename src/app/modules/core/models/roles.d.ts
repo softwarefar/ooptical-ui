@@ -1,4 +1,4 @@
-export interface Roles {
+interface Roles {
   user?: boolean;
   admin?: boolean;
 }

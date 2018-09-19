@@ -1,4 +1,3 @@
-import {NavLink} from './objects/nav-link';
 import {filter} from 'rxjs/operators';
 import {Injectable} from '@angular/core';
 import {Subject} from 'rxjs';

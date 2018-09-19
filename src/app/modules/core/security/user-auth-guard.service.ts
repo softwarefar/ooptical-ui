@@ -1,11 +1,10 @@
 import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, CanActivate, CanActivateChild, Router, RouterStateSnapshot} from '@angular/router';
 import {AngularFireAuth} from 'angularfire2/auth';
-import {Roles} from '../modules/shared/objects/roles';
 import {AngularFirestore} from 'angularfire2/firestore';
-import {flatMap, map, tap} from 'rxjs/operators';
+import {flatMap, map} from 'rxjs/operators';
 import {User} from 'firebase';
-import {Observable, of} from 'rxjs';
+import {of} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'

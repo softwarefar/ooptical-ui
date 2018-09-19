@@ -1,0 +1,3 @@
+interface CustomerEditResult {
+ customer: Customer;
+}

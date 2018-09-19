@@ -1,4 +1,4 @@
-import {ToasterService} from './toaster.service';
+import {ToasterService} from '../../core/services/toaster.service';
 import {Observable, of} from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 

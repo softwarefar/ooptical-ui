@@ -37,8 +37,9 @@ import {
   MatStepperModule,
   MatTableModule,
   MatTabsModule,
-  MatTooltipModule, MAT_DATE_FORMATS,
+  MatTooltipModule, MAT_DATE_FORMATS, MAT_DATE_LOCALE,
 } from '@angular/material';
+import * as moment from 'moment';
 
 const MATERIAL = [
   MatToolbarModule,
@@ -81,10 +82,13 @@ const MATERIAL = [
   MatTreeModule,
 ];
 
+moment.locale('fr-ch');
+
 @NgModule({
   imports: [MATERIAL],
   exports: [MATERIAL],
   providers: [
+    {provide: MAT_DATE_LOCALE, useValue: 'fr-ch'},
     {provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS},
   ]
 })

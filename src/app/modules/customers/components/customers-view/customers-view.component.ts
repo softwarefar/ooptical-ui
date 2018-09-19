@@ -1,14 +1,12 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatDialog, MatSort, MatTableDataSource} from '@angular/material';
-import {Customer} from '../objects/customer';
 import {animate, state, style, transition, trigger} from '@angular/animations';
-import {AngularFirestore} from 'angularfire2/firestore';
+import {AngularFirestore, CollectionReference, Query} from 'angularfire2/firestore';
 import {fromPromise} from 'rxjs/internal-compatibility';
 import {CustomerEditDialogComponent} from '../../dialogs/customer-edit-dialog/customer-edit-dialog.component';
-import {CustomerEditData} from '../../dialogs/dialog-data';
-import {CustomerEditResult} from '../../dialogs/dialog-result';
 import {flatMap} from 'rxjs/operators';
 import {throwError} from 'rxjs';
+import * as _moment from 'moment';
 
 @Component({
   selector: 'app-customers-view',
@@ -24,6 +22,8 @@ import {throwError} from 'rxjs';
 })
 export class CustomersViewComponent implements OnInit {
 
+  moment = _moment;
+
   constructor(
     private dialog: MatDialog,
     private afs: AngularFirestore
@@ -31,7 +31,7 @@ export class CustomersViewComponent implements OnInit {
   }
 
   dataSource: MatTableDataSource<Customer> = new MatTableDataSource<Customer>();
-  displayedColumns: string[] = [/*'id', */'lastName', 'firstName', 'actions'];
+  displayedColumns: string[] = [/*'id', */'lastName', 'firstName', 'birthDate', 'address', 'phoneNumber', 'email', 'actions'];
   expandedIdElement: number = NaN;
 
   @ViewChild(MatSort)
@@ -39,20 +39,19 @@ export class CustomersViewComponent implements OnInit {
 
   ngOnInit() {
     this.dataSource.data = [];
-    this.afs.collection<Customer>('customers').valueChanges().subscribe((value: Customer[]) => {
+    this.afs.collection<Customer>('customers', this.queryFn).valueChanges().subscribe((value: Customer[]) => {
       this.dataSource.data = value;
     });
     this.dataSource.sort = this.sort;
-    this.dataSource.filterPredicate = this.filterPredicate;
+  }
+
+  queryFn: (ref: CollectionReference) => Query = (ref: CollectionReference) => {
+    return ref.orderBy('lastName', 'asc');
   }
 
   applyFilter(value: string) {
     this.dataSource.filter = value;
   }
-
-  filterPredicate = (data: Customer, filter: string) => {
-    return true;
-  };
 
   expendElement(id: number) {
     if (this.expandedIdElement === id) {
@@ -64,15 +63,19 @@ export class CustomersViewComponent implements OnInit {
 
   editCustomer(element: Customer) {
     this.dialog.open<CustomerEditDialogComponent, CustomerEditData, CustomerEditResult>(CustomerEditDialogComponent, {
-      width: '500px',
+      width: '800px',
       data: {customer: element}
-    }).afterClosed().pipe(flatMap((result: CustomerEditResult) => {
-      if (!!result) {
-        return fromPromise(this.afs.collection<Customer>('customers').doc(element.id).set(result.customer));
-      } else {
-        throwError(null);
-      }
-    })).subscribe(() => {
+    }).afterClosed().pipe(
+      flatMap((result: CustomerEditResult) => {
+        console.log(result);
+        if (!!result) {
+            return fromPromise(this.afs.collection<Customer>('customers').doc(element.id).set(result.customer));
+          } else {
+            return throwError(null);
+          }
+        }
+      )
+    ).subscribe(() => {
       console.log('Customer updated');
     });
   }

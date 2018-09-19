@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {AngularFireAuth} from 'angularfire2/auth';
-import {auth, User} from 'firebase';
-import UserCredential = firebase.auth.UserCredential;
+import {auth} from 'firebase';
 import {Router} from '@angular/router';
+import UserCredential = firebase.auth.UserCredential;
 
 @Component({
   selector: 'app-anonymous-board',

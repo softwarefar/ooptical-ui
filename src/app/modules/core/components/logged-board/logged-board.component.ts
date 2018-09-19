@@ -1,10 +1,9 @@
 import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
-import {DynTabService} from '../../dyn-tab-service';
+import {DynTabService} from '../../services/dyn-tab-service';
 import {ActivatedRoute, NavigationEnd, NavigationExtras, Router} from '@angular/router';
 import {AngularFireAuth} from 'angularfire2/auth';
-import {auth, User} from 'firebase';
+import {User} from 'firebase';
 import {filter, first} from 'rxjs/operators';
-import {NavLink} from '../../objects/nav-link';
 
 @Component({
   templateUrl: './logged-board.component.html',

@@ -1,9 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
-import {Customer} from '../objects/customer';
-import {CustomerService} from '../../services';
-import {DynTabService} from '../../../../dyn-tab-service';
-import {NavLink} from '../../../../objects/nav-link';
+import {DynTabService} from '../../../core/services/dyn-tab-service';
 import {AngularFirestore} from 'angularfire2/firestore';
 import {flatMap} from 'rxjs/operators';
 
@@ -15,7 +12,6 @@ import {flatMap} from 'rxjs/operators';
 export class CustomerViewComponent implements OnInit {
 
   constructor(
-    private customerService: CustomerService,
     private dynTabService: DynTabService,
     private route: ActivatedRoute,
     private afs: AngularFirestore
