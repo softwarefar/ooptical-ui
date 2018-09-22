@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="FIRSTANME" datatype="html">
+        <source>FirstName</source>
+        <target>Prénom</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modules/customers/dialogs/customer-edit-dialog/customer-edit-dialog.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="LASTNAME" datatype="html">
+        <source>LastName</source>
+        <target>Nom</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modules/customers/dialogs/customer-edit-dialog/customer-edit-dialog.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="BIRTHDATE" datatype="html">
+        <source>BirthDate</source>
+        <target>Anniversaire</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modules/customers/dialogs/customer-edit-dialog/customer-edit-dialog.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ADDRESS" datatype="html">
+        <source>Address</source>
+        <target>Adresse</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modules/customers/dialogs/customer-edit-dialog/customer-edit-dialog.component.html</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="PHONE_NUMBER" datatype="html">
+        <source>Phone number</source>
+        <target>Numéro de téléphone</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modules/customers/dialogs/customer-edit-dialog/customer-edit-dialog.component.html</context>
+          <context context-type="linenumber">27</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="EMAIL" datatype="html">
+        <source>Email</source>
+        <target>Email</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modules/customers/dialogs/customer-edit-dialog/customer-edit-dialog.component.html</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="DETAILS" datatype="html">
+        <source>Details</source>
+        <target>Détails</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modules/customers/dialogs/customer-edit-dialog/customer-edit-dialog.component.html</context>
+          <context context-type="linenumber">35</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="86f653fb055960bde2d1dd3498a6498222a1701b" datatype="html">
+        <source> Id</source>
+        <target>Id</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modules/customers/components/customers-view/customers-view.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="fafb587d0c0047f357f0b9c03b92a2f1a44d6e54" datatype="html">
+        <source> FirstName</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modules/customers/components/customers-view/customers-view.component.html</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="85e9333f1e0f6017f91f7f68ff291c9c766e800b" datatype="html">
+        <source> LastName</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modules/customers/components/customers-view/customers-view.component.html</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5c531118ce61f9d59da9e1bac06663ede505700c" datatype="html">
+        <source> Birth Date</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modules/customers/components/customers-view/customers-view.component.html</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="9aa9dd46b13ae1eedccaa06a4c17a7ae18ab080f" datatype="html">
+        <source> Address</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modules/customers/components/customers-view/customers-view.component.html</context>
+          <context context-type="linenumber">35</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="93de1a5a2fe7f9cd8545d2df00517b106c82bb27" datatype="html">
+        <source> Phone number</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modules/customers/components/customers-view/customers-view.component.html</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="a20a6d4a37afdd7b03a99c1673b6625e1bfd319b" datatype="html">
+        <source> Email</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modules/customers/components/customers-view/customers-view.component.html</context>
+          <context context-type="linenumber">47</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
