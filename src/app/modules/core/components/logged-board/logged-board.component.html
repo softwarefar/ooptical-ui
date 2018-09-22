@@ -11,8 +11,14 @@
                [selectedIndex]="selectedIndex">
   <mat-tab *ngFor="let link of dynTabService.navLinks">
     <ng-template mat-tab-label>
-      <div mat-tab-label-content>{{link.label}}</div>
-      <button mat-icon-button *ngIf="link.closeable"
+      <ng-container [ngSwitch]="link.type">
+        <div mat-tab-label-content *ngSwitchCase="'CUSTOMERS'" i18n="@@CUSTOMERS">Customers</div>
+        <div mat-tab-label-content *ngSwitchCase="'PRODUCTS'" i18n="@@PRODUCTS">Products</div>
+        <div mat-tab-label-content *ngSwitchCase="'STORES'" i18n="@@STORES">Stores</div>
+        <div mat-tab-label-content *ngSwitchCase="'PROVIDERS'" i18n="@@PROVIDERS">Providers</div>
+        <div mat-tab-label-content *ngSwitchDefault>{{link.label}}</div>
+      </ng-container>
+      <button mat-icon-button *ngIf="NavLinkCloseable[link.type]"
               (click)="closeTab($event, link)">
         <i class="fas fa-times"></i>
       </button>

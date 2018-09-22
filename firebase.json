@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/ooptical-ui",
+    "public": "dist",
     "ignore": [
       "firebase.json",
       "**/.*",

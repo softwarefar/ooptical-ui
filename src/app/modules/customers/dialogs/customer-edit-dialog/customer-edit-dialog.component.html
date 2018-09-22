@@ -2,13 +2,13 @@
 <div mat-dialog-content fxLayout="column">
   <div fxLayout="row" fxLayoutGap="10px">
     <mat-form-field fxFlex>
-      <input cdkFocusInitial matInput i18n-placeholder="@@FIRSTANME"  placeholder="FirstName" [(ngModel)]="customer.firstName">
+      <input matInput i18n-placeholder="@@FIRST_NAME"  placeholder="FirstName" [(ngModel)]="customer.firstName">
     </mat-form-field>
     <mat-form-field fxFlex>
-      <input matInput i18n-placeholder="@@LASTNAME" placeholder="LastName" [(ngModel)]="customer.lastName">
+      <input matInput i18n-placeholder="@@LAST_NAME" placeholder="LastName" [(ngModel)]="customer.lastName">
     </mat-form-field>
     <mat-form-field fxFlex>
-      <input matInput [matDatepicker]="picker" i18n-placeholder="@@BIRTHDATE" placeholder="BirthDate" [formControl]="birthDateForm">
+      <input matInput [matDatepicker]="picker" i18n-placeholder="@@BIRTH_DATE" placeholder="BirthDate" [formControl]="birthDateForm">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
@@ -38,6 +38,6 @@
 </div>
 <div mat-dialog-actions>
   <span class="flex-spacer"></span>
-  <button mat-button [mat-dialog-close]>Cancel</button>
-  <button mat-button [mat-dialog-close]="{customer: customer}">Save</button>
+  <button mat-button [mat-dialog-close]="{}" i18n="@@CANCEL">Cancel</button>
+  <button mat-button [mat-dialog-close]="{customer: customer}" i18n="@@SAVE">Save</button>
 </div>

@@ -11,11 +11,11 @@ import {flatMap} from 'rxjs/operators';
   styleUrls: ['./customer-edit-dialog.component.css']
 })
 export class CustomerEditDialogComponent implements OnInit {
-  customer: Customer;
+  customer: Partial<Customer>;
   birthDateForm: FormControl = new FormControl();
   addressForm: FormControl = new FormControl();
 
-  addresses: any[];
+  addresses?: any[];
 
   constructor(
     private ref: ChangeDetectorRef,

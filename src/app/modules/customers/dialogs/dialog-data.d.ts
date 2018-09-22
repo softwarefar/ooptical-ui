@@ -1,3 +1,3 @@
 interface CustomerEditData {
-  customer: Customer;
+  customer: Partial<Customer>;
 }

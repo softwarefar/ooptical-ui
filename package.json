@@ -18,11 +18,13 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build-prod": "ng build --prod",
-    "build": "ng build",
+    "start:fr-ch": "ng serve --configuration=fr-ch",
+    "build": "ng build --prod --base-href /en-us/",
+    "build:fr-ch": "ng build --prod --configuration=fr-ch --base-href /fr-ch/",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "i18n": "ng xi18n --output-path locale"
   },
   "private": false,
   "dependencies": {

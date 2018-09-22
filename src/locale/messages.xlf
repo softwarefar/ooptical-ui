@@ -4,7 +4,6 @@
     <body>
       <trans-unit id="CUSTOMERS" datatype="html">
         <source>Customers</source>
-        <target>Clients</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/modules/core/components/logged-board/logged-board.component.html</context>
           <context context-type="linenumber">15</context>
@@ -12,7 +11,6 @@
       </trans-unit>
       <trans-unit id="PRODUCTS" datatype="html">
         <source>Products</source>
-        <target>Produits</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/modules/core/components/logged-board/logged-board.component.html</context>
           <context context-type="linenumber">16</context>
@@ -20,7 +18,6 @@
       </trans-unit>
       <trans-unit id="STORES" datatype="html">
         <source>Stores</source>
-        <target>Magasins</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/modules/core/components/logged-board/logged-board.component.html</context>
           <context context-type="linenumber">17</context>
@@ -28,7 +25,6 @@
       </trans-unit>
       <trans-unit id="PROVIDERS" datatype="html">
         <source>Providers</source>
-        <target>Fournisseurs</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/modules/core/components/logged-board/logged-board.component.html</context>
           <context context-type="linenumber">18</context>
@@ -36,7 +32,6 @@
       </trans-unit>
       <trans-unit id="LOGIN_WITH_GOOGLE" datatype="html">
         <source>Login with google</source>
-        <target>Se logger avec google</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/modules/core/components/anonymous-board/anonymous-board.component.html</context>
           <context context-type="linenumber">4</context>
@@ -44,7 +39,6 @@
       </trans-unit>
       <trans-unit id="FIRST_NAME" datatype="html">
         <source>FirstName</source>
-        <target>Prénom</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/modules/customers/dialogs/customer-edit-dialog/customer-edit-dialog.component.html</context>
           <context context-type="linenumber">5</context>
@@ -56,7 +50,6 @@
       </trans-unit>
       <trans-unit id="LAST_NAME" datatype="html">
         <source>LastName</source>
-        <target>Nom</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/modules/customers/dialogs/customer-edit-dialog/customer-edit-dialog.component.html</context>
           <context context-type="linenumber">8</context>
@@ -68,7 +61,6 @@
       </trans-unit>
       <trans-unit id="BIRTH_DATE" datatype="html">
         <source>BirthDate</source>
-        <target>Anniversaire</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/modules/customers/dialogs/customer-edit-dialog/customer-edit-dialog.component.html</context>
           <context context-type="linenumber">11</context>
@@ -80,7 +72,6 @@
       </trans-unit>
       <trans-unit id="ADDRESS" datatype="html">
         <source>Address</source>
-        <target>Adresse</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/modules/customers/dialogs/customer-edit-dialog/customer-edit-dialog.component.html</context>
           <context context-type="linenumber">18</context>
@@ -92,7 +83,6 @@
       </trans-unit>
       <trans-unit id="PHONE_NUMBER" datatype="html">
         <source>Phone number</source>
-        <target>Numéro</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/modules/customers/dialogs/customer-edit-dialog/customer-edit-dialog.component.html</context>
           <context context-type="linenumber">27</context>
@@ -104,7 +94,6 @@
       </trans-unit>
       <trans-unit id="EMAIL" datatype="html">
         <source>Email</source>
-        <target>Email</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/modules/customers/dialogs/customer-edit-dialog/customer-edit-dialog.component.html</context>
           <context context-type="linenumber">30</context>
@@ -116,7 +105,6 @@
       </trans-unit>
       <trans-unit id="DETAILS" datatype="html">
         <source>Details</source>
-        <target>Détails</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/modules/customers/dialogs/customer-edit-dialog/customer-edit-dialog.component.html</context>
           <context context-type="linenumber">35</context>
@@ -124,7 +112,6 @@
       </trans-unit>
       <trans-unit id="CANCEL" datatype="html">
         <source>Cancel</source>
-        <target>Annuler</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/modules/customers/dialogs/customer-edit-dialog/customer-edit-dialog.component.html</context>
           <context context-type="linenumber">41</context>
@@ -132,7 +119,6 @@
       </trans-unit>
       <trans-unit id="SAVE" datatype="html">
         <source>Save</source>
-        <target>Sauvegarder</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/modules/customers/dialogs/customer-edit-dialog/customer-edit-dialog.component.html</context>
           <context context-type="linenumber">42</context>
@@ -140,7 +126,6 @@
       </trans-unit>
       <trans-unit id="ID" datatype="html">
         <source>Id</source>
-        <target>Id</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/modules/customers/components/customers-view/customers-view.component.html</context>
           <context context-type="linenumber">11</context>
@@ -148,7 +133,6 @@
       </trans-unit>
       <trans-unit id="ADD_CUSTOMER" datatype="html">
         <source>Add customer</source>
-        <target>Ajouter un client</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/modules/customers/components/customers-view/customer-add-button/customer-add-button.component.html</context>
           <context context-type="linenumber">1</context>
@@ -156,7 +140,6 @@
       </trans-unit>
       <trans-unit id="DELETE_CUSTOMER" datatype="html">
         <source>Delete customer</source>
-        <target>Supprimer le client</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/modules/customers/components/customers-view/customer-delete-button/customer-delete-button.component.html</context>
           <context context-type="linenumber">1</context>
@@ -164,7 +147,6 @@
       </trans-unit>
       <trans-unit id="EDIT_CUSTOMER" datatype="html">
         <source>Edit customer</source>
-        <target>Editer le client</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/modules/customers/components/customers-view/customer-edit-button/customer-edit-button.component.html</context>
           <context context-type="linenumber">1</context>
@@ -172,7 +154,6 @@
       </trans-unit>
       <trans-unit id="OPEN_CUSTOMER" datatype="html">
         <source>Open customer</source>
-        <target>Détail du client</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/modules/customers/components/customers-view/customer-view-button/customer-view-button.component.html</context>
           <context context-type="linenumber">1</context>

@@ -1,0 +1,5 @@
+<mat-toolbar>
+  <app-customer-view-button [customer]="customer"></app-customer-view-button>
+  <app-customer-edit-button (editRequest)="editRequest.emit(customer)"></app-customer-edit-button>
+  <app-customer-delete-button (deleteRequest)="deleteRequest.emit(customer)"></app-customer-delete-button>
+</mat-toolbar>

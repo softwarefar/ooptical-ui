@@ -1,7 +1,7 @@
 :host {
   display: flex;
   flex-direction: column;
-  flex: 1 1 1e-09px;
+  flex: 1 1 100%;
 }
 
 .table-container {
@@ -16,7 +16,15 @@ form {
 table {
   width: 100%;
 }
-
+tr.element-row {
+  height: 64px !important;
+}
+tr.element-row > td:last-child {
+  padding-right: 0 !important;
+  /*
+  max-width: 0px;
+  */
+}
 tr.detail-row {
   height: 0;
 }

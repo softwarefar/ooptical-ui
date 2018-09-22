@@ -14,9 +14,11 @@ export class CustomerViewButtonComponent {
   }
 
   @Input()
-  customer: Customer;
+  customer?: Customer;
 
   openCustomer() {
-    this.router.navigate([`/customers/${this.customer.id}`]);
+    if (this.customer) {
+      this.router.navigate([`/customers/${this.customer.id}`]);
+    }
   }
 }

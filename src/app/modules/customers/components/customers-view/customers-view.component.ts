@@ -1,12 +1,12 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatDialog, MatSort, MatTableDataSource} from '@angular/material';
 import {animate, state, style, transition, trigger} from '@angular/animations';
-import {AngularFirestore, CollectionReference, Query} from 'angularfire2/firestore';
-import {fromPromise} from 'rxjs/internal-compatibility';
+import {CollectionReference, Query} from 'angularfire2/firestore';
 import {CustomerEditDialogComponent} from '../../dialogs/customer-edit-dialog/customer-edit-dialog.component';
 import {flatMap} from 'rxjs/operators';
 import {throwError} from 'rxjs';
 import * as _moment from 'moment';
+import {CustomerService} from '../../../core/services/customer.service';
 
 @Component({
   selector: 'app-customers-view',
@@ -26,23 +26,24 @@ export class CustomersViewComponent implements OnInit {
 
   constructor(
     private dialog: MatDialog,
-    private afs: AngularFirestore
+    private customerService: CustomerService
   ) {
   }
 
   dataSource: MatTableDataSource<Customer> = new MatTableDataSource<Customer>();
   displayedColumns: string[] = [/*'id', */'lastName', 'firstName', 'birthDate', 'address', 'phoneNumber', 'email', 'actions'];
-  expandedIdElement: number = NaN;
+  expandedIdElement?: string;
+  overflownIdElement?: string;
 
   @ViewChild(MatSort)
-  sort: MatSort;
+  sort?: MatSort;
 
   ngOnInit() {
     this.dataSource.data = [];
-    this.afs.collection<Customer>('customers', this.queryFn).valueChanges().subscribe((value: Customer[]) => {
+    this.customerService.surveyCustomers(this.queryFn).subscribe((value: Customer[]) => {
       this.dataSource.data = value;
     });
-    this.dataSource.sort = this.sort;
+    this.dataSource.sort = this.sort || null;
   }
 
   queryFn: (ref: CollectionReference) => Query = (ref: CollectionReference) => {
@@ -53,9 +54,9 @@ export class CustomersViewComponent implements OnInit {
     this.dataSource.filter = value;
   }
 
-  expendElement(id: number) {
+  expendElement(id: string) {
     if (this.expandedIdElement === id) {
-      this.expandedIdElement = NaN;
+      this.expandedIdElement = undefined;
     } else {
       this.expandedIdElement = id;
     }
@@ -67,9 +68,9 @@ export class CustomersViewComponent implements OnInit {
       data: {customer: element}
     }).afterClosed().pipe(
       flatMap((result: CustomerEditResult) => {
-        console.log(result);
-        if (!!result) {
-            return fromPromise(this.afs.collection<Customer>('customers').doc(element.id).set(result.customer));
+          console.log(result);
+          if (!!result) {
+            return this.customerService.updateCustomer(result.customer);
           } else {
             return throwError(null);
           }
@@ -81,8 +82,16 @@ export class CustomersViewComponent implements OnInit {
   }
 
   deleteCustomer(element: Customer) {
-    fromPromise(this.afs.collection<Customer>('customers').doc(element.id).delete()).subscribe(() => {
+    this.customerService.deleteCustomer(element).subscribe(() => {
       console.log('Customer deleted');
     });
+  }
+
+  mouseenter($event: Customer) {
+    this.overflownIdElement = $event.id;
+  }
+
+  mouseleave($event: Customer) {
+    this.overflownIdElement = undefined;
   }
 }

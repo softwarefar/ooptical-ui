@@ -1,6 +1,9 @@
 import {filter} from 'rxjs/operators';
 import {Injectable} from '@angular/core';
 import {Subject} from 'rxjs';
+import {NavLinkType} from '../models/nav-link/nav-link-type';
+import {NavLink} from '../models/nav-link/nav-link';
+import {NavLinkMultiple} from '../models/nav-link/nav-link-multiple';
 
 @Injectable({
   providedIn: 'root'
@@ -12,10 +15,10 @@ export class DynTabService {
   addNavLinkIndexEvent: Subject<number> = new Subject<number>();
 
   navLinks: NavLink[] = [
-    {type: 'CUSTOMERS', multiple: false, path: '/customers', closeable: false, label: 'Customers'},
-    {type: 'PRODUCTS', multiple: false, path: '/products', closeable: false, label: 'Products'},
-    {type: 'STORES', multiple: false, path: '/stores', closeable: false, label: 'Stores'},
-    {type: 'PROVIDERS', multiple: false, path: '/providers', closeable: false, label: 'Providers'}
+    {type: NavLinkType.CUSTOMERS, path: '/customers', label: 'Customers'},
+    {type: NavLinkType.PRODUCTS, path: '/products', label: 'Products'},
+    {type: NavLinkType.STORES, path: '/stores', label: 'Stores'},
+    {type: NavLinkType.PROVIDERS, path: '/providers', label: 'Providers'}
   ];
 
   constructor() {
@@ -27,12 +30,14 @@ export class DynTabService {
       let idx: number = this.getIndexOfPath(navLink.path);
       if (idx !== -1) {
         this.addNavLinkIndexEvent.next(idx);
-      } else if (this.isSameTypeOfPresent(navLink) && !navLink.multiple) {
+      } else if (this.isSameTypeOfPresent(navLink) && !NavLinkMultiple[navLink.type]) {
         const sameType: NavLink = this.getSameTypeOf(navLink);
-        idx = this.getIndexOfPath(sameType.path);
-        this.removeNavLinkIndex(idx);
-        this.navLinks.push(navLink);
-        this.addNavLinkIndexEvent.next(this.navLinks.length - 1);
+        if (sameType) { // always true
+          idx = this.getIndexOfPath(sameType.path);
+          this.removeNavLinkIndex(idx);
+          this.navLinks.push(navLink);
+          this.addNavLinkIndexEvent.next(this.navLinks.length - 1);
+        }
       } else {
         this.navLinks.push(navLink);
         this.addNavLinkIndexEvent.next(this.navLinks.length - 1);
@@ -57,9 +62,17 @@ export class DynTabService {
   }
 
   private getSameTypeOf(navLink: NavLink): NavLink {
-    return this.navLinks.find((n: NavLink) => {
+    const result: NavLink | undefined = this.navLinks.find((n: NavLink) => {
       return n.type === navLink.type;
     });
+    if (!!result) {
+      return result;
+    }
+    throw {
+      message: '',
+      name: '',
+      stack: null
+    };
   }
 
   private isSameTypeOfPresent(navLink: NavLink): boolean {

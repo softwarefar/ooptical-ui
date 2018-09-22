@@ -1,9 +1,11 @@
 import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {DynTabService} from '../../services/dyn-tab-service';
-import {ActivatedRoute, NavigationEnd, NavigationExtras, Router} from '@angular/router';
+import {ActivatedRoute, Event, NavigationEnd, NavigationExtras, Router, RouterEvent} from '@angular/router';
 import {AngularFireAuth} from 'angularfire2/auth';
 import {User} from 'firebase';
-import {filter, first} from 'rxjs/operators';
+import {filter, first, map} from 'rxjs/operators';
+import {NavLink} from '../../models/nav-link/nav-link';
+import {NavLinkCloseable} from '../../models/nav-link/nav-link-closeable';
 
 @Component({
   templateUrl: './logged-board.component.html',
@@ -20,18 +22,21 @@ export class LoggedBoardComponent implements OnInit {
   ) {
   }
 
+  NavLinkCloseable = NavLinkCloseable;
+
   selectedIndex: number = 0;
-  user: User;
+  user?: User | null;
 
   ngOnInit() {
-    this.afAuth.user.subscribe((user: User) => {
+    this.afAuth.user.subscribe((user: User | null) => {
       this.user = user;
     });
     // fix index after nav from new url
     this.router.events.pipe(
       filter((event: Event) => event instanceof NavigationEnd),
-      first()
-    ).subscribe((event: NavigationEnd) => {
+      first(),
+      map((event: Event) => event as NavigationEnd),
+    ).subscribe((event: RouterEvent) => {
       const idx: number = this.dynTabService.getIndexOfPath(event.url);
       if (idx !== -1) {
         this.selectedIndex = this.dynTabService.getIndexOfPath(event.url);

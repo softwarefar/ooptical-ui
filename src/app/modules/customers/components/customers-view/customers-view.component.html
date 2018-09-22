@@ -8,55 +8,55 @@
 
     <!-- Id Column -->
     <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header i18n> Id</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@ID">Id</th>
       <td mat-cell *matCellDef="let element"> {{element.id}}</td>
     </ng-container>
 
     <!-- FirstName Column -->
     <ng-container matColumnDef="firstName">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header i18n> FirstName</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@FIRST_NAME">FirstName</th>
       <td mat-cell *matCellDef="let element"> {{element.firstName}}</td>
     </ng-container>
 
     <!-- LastName Column -->
     <ng-container matColumnDef="lastName">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header i18n> LastName</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@LAST_NAME">LastName</th>
       <td mat-cell *matCellDef="let element"> {{element.lastName}}</td>
     </ng-container>
 
     <!-- BirthDate Column -->
     <ng-container matColumnDef="birthDate">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header i18n> Birth Date</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@BIRTH_DATE">Birth Date</th>
       <td mat-cell *matCellDef="let element"> <span *ngIf="!!element.birthDate">{{moment(element.birthDate).format('L')}}</span></td>
     </ng-container>
 
     <!-- Address Column -->
     <ng-container matColumnDef="address">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header i18n> Address</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@ADDRESS">Address</th>
       <td mat-cell *matCellDef="let element"> {{element.address}}</td>
     </ng-container>
 
     <!-- City Column -->
     <ng-container matColumnDef="phoneNumber">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header i18n> Phone number</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@PHONE_NUMBER">Phone number</th>
       <td mat-cell *matCellDef="let element"> {{element.phoneNumber}}</td>
     </ng-container>
 
     <!-- Country Column -->
     <ng-container matColumnDef="email">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header i18n> Email</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@EMAIL">Email</th>
       <td mat-cell *matCellDef="let element"> {{element.email}}</td>
     </ng-container>
 
     <!-- Actions Column -->
     <ng-container matColumnDef="actions">
-      <th mat-header-cell *matHeaderCellDef style="width: 60px"></th>
+      <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let element">
-        <mat-toolbar>
-          <app-customer-view-button [customer]="element"></app-customer-view-button>
-          <app-customer-edit-button (editRequest)="editCustomer(element)"></app-customer-edit-button>
-          <app-customer-delete-button (deleteRequest)="deleteCustomer(element)"></app-customer-delete-button>
-        </mat-toolbar>
+        <app-customer-row-toolbar *ngIf="element.id == overflownIdElement"
+                                  [customer]="element"
+                                  (editRequest)="editCustomer($event)"
+                                  (deleteRequest)="deleteCustomer($event)"
+        ></app-customer-row-toolbar>
       </td>
     </ng-container>
 
@@ -70,7 +70,10 @@
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="element-row"
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+        class="element-row"
+        (mouseenter)="mouseenter(row)"
+        (mouseleave)="mouseleave(row)"
         [class.expandable-row]="!!row.details"
         [class.expanded-row]="expandedIdElement === row.id"
         (click)="expendElement(row.id)">

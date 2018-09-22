@@ -1,8 +1,7 @@
 import {Component} from '@angular/core';
 import {MatDialog} from '@angular/material';
 import {CustomerEditDialogComponent} from '../../../dialogs/customer-edit-dialog/customer-edit-dialog.component';
-import {AngularFirestore} from 'angularfire2/firestore';
-import {fromPromise} from 'rxjs/internal-compatibility';
+import {CustomerService} from '../../../../core/services/customer.service';
 
 @Component({
   selector: 'app-customer-add-button',
@@ -13,22 +12,17 @@ export class CustomerAddButtonComponent {
 
   constructor(
     private dialog: MatDialog,
-    private afs: AngularFirestore
+    private customerService: CustomerService
   ) {
   }
 
   openCreateNewCustomerDialog() {
     this.dialog.open<CustomerEditDialogComponent, CustomerEditData, CustomerEditResult>(CustomerEditDialogComponent, {
       width: '800px',
-      data: {customer: {id: null, firstName: '', lastName: '', birthDate: new Date().getTime(), address: '', phoneNumber: '', email: '', details: ''}}
-    }).afterClosed().subscribe((result: CustomerEditResult) => {
+      data: {customer: {birthDate: new Date().getTime()}}
+    }).afterClosed().subscribe((result: CustomerEditResult | undefined) => {
       if (result && result.customer) {
-        const id: string = this.afs.createId();
-        fromPromise(this.afs.collection('customers').doc(id).set({
-          id: id,
-          firstName: result.customer.firstName,
-          lastName: result.customer.lastName
-        })).subscribe(() => {
+        this.customerService.createCustomer(result.customer).subscribe(() => {
           console.log('The customer was created');
         });
       }

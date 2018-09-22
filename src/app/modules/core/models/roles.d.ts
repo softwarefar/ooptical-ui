@@ -1,4 +1,4 @@
 interface Roles {
-  user?: boolean;
-  admin?: boolean;
+  user: boolean;
+  admin: boolean;
 }

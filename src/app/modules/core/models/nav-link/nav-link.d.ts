@@ -1,8 +1,8 @@
+import {NavLinkType} from './nav-link-type';
+
 interface NavLink {
   label: string;
   path: string;
-  type: string;
+  type: NavLinkType;
   subType?: string;
-  multiple: boolean;
-  closeable: boolean;
 }

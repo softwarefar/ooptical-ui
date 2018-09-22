@@ -37,7 +37,16 @@
             ]
           },
           "configurations": {
+            "fr-ch": {
+              "outputPath": "dist/fr-ch/",
+              "aot": true,
+              "i18nFile": "src/locale/messages.fr-ch.xlf",
+              "i18nFormat": "xlf",
+              "i18nLocale": "fr-ch",
+              "i18nMissingTranslation": "warning"
+            },
             "production": {
+              "outputPath": "dist/en-us/",
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
@@ -64,6 +73,9 @@
           "configurations": {
             "production": {
               "browserTarget": "ooptical-ui:build:production"
+            },
+            "fr-ch": {
+              "browserTarget": "ooptical-ui:build:fr-ch"
             }
           }
         },
