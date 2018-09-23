@@ -16,7 +16,7 @@ before_script:
 script:
 - git checkout master
 - ng build --prod --base-href /en-us/
-- ng build --prod --configuration=fr --base-href /fr-ch/
+- ng build --prod --configuration=fr-ch --base-href /fr-ch/
 - cp dist/en.us/index.html dist/en-us/404.html
 - cp dist/fr-ch/index.html dist/fr-ch/404.html
 deploy:
