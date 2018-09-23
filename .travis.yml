@@ -17,8 +17,8 @@ script:
 - git checkout master
 - ng build --prod --base-href /en-us/
 - ng build --prod --configuration=fr --base-href /fr-ch/
-- cp dist/en/index.html dist/en-us/404.html
-- cp dist/fr/index.html dist/fr-ch/404.html
+- cp dist/en.us/index.html dist/en-us/404.html
+- cp dist/fr-ch/index.html dist/fr-ch/404.html
 deploy:
   provider: firebase
   token:
