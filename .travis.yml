@@ -14,7 +14,6 @@ before_script:
 - npm i -g firebase-tools
 - npm install
 script:
-- git checkout master
 - ng build --prod --base-href /en-us/
 - ng build --prod --configuration=production-fr-ch --base-href /fr-ch/
 - cp src/404.html dist/404.html
