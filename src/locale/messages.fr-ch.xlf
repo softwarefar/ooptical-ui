@@ -7,7 +7,7 @@
         <target>Clients</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/modules/core/components/logged-board/logged-board.component.html</context>
-          <context context-type="linenumber">22</context>
+          <context context-type="linenumber">17</context>
         </context-group>
       </trans-unit>
       <trans-unit id="PRODUCTS" datatype="html">
@@ -15,7 +15,7 @@
         <target>Produits</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/modules/core/components/logged-board/logged-board.component.html</context>
-          <context context-type="linenumber">23</context>
+          <context context-type="linenumber">18</context>
         </context-group>
       </trans-unit>
       <trans-unit id="STORES" datatype="html">
@@ -23,7 +23,7 @@
         <target>Magasins</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/modules/core/components/logged-board/logged-board.component.html</context>
-          <context context-type="linenumber">24</context>
+          <context context-type="linenumber">19</context>
         </context-group>
       </trans-unit>
       <trans-unit id="PROVIDERS" datatype="html">
@@ -31,7 +31,7 @@
         <target>Fournisseurs</target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/modules/core/components/logged-board/logged-board.component.html</context>
-          <context context-type="linenumber">25</context>
+          <context context-type="linenumber">20</context>
         </context-group>
       </trans-unit>
       <trans-unit id="LOGIN_WITH_GOOGLE" datatype="html">
@@ -40,6 +40,14 @@
         <context-group purpose="location">
           <context context-type="sourcefile">app/modules/core/components/anonymous-board/anonymous-board.component.html</context>
           <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="STORE" datatype="html">
+        <source>Store</source>
+        <target>Magasin</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modules/core/components/logged-board/store-selector/store-selector.component.html</context>
+          <context context-type="linenumber">2</context>
         </context-group>
       </trans-unit>
       <trans-unit id="FIRST_NAME" datatype="html">
