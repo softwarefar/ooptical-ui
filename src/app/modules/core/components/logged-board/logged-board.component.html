@@ -5,6 +5,13 @@
     <button mat-button (click)="logout()">
       <i class="fas fa-sign-out-alt"></i>&nbsp;{{user?.displayName}}
     </button>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <i class="fas fa-globe"></i>
+    </button>
+    <mat-menu #menu="matMenu">
+      <a mat-menu-item href="/en-us">English</a>
+      <a mat-menu-item href="/fr-ch">French-Switzerland</a>
+    </mat-menu>
   </mat-toolbar-row>
 </mat-toolbar>
 <mat-tab-group (selectedIndexChange)="selectedIndexChange($event)" *ngIf="user"

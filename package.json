@@ -20,7 +20,7 @@
     "start": "ng serve",
     "start:fr-ch": "ng serve --configuration=fr-ch",
     "build": "ng build --prod --base-href /en-us/",
-    "build:fr-ch": "ng build --prod --configuration=fr-ch --base-href /fr-ch/",
+    "build:fr-ch": "ng build --prod --configuration=production-fr-ch --base-href /fr-ch/",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
