@@ -4,9 +4,6 @@ node_js:
 cache:
   directories:
   - "node_modules"
-env:
-  global:
-    secure: "fiAf3fswcydsvRweQXeJy3pr31vcEWyjlCMCJgBTB0TV37QzmsNN7MbFzz55vyGZbIB600qwP7dOjhZaFv/1myEp4nPrrYdf+RRMfPp5VCH3MzASMICb4ZcBHyOIb2IMdltmpi7IPQuCVObhsNVlhMK1RJIzNfYo4StsffjIBV7bVg0x5b2Ig3H3eiJKBpYB2+vmdqpHgHJtPArSG3cgQIpEm7oxpivLrhIHe9jKL9wK1x4JIO2EG+QlukDJsilXllhBVf5oVEMshOSdTNcL/cFJ1VpMbsiZoubdK3DbTNFJSt3UALoCgasO/vYUruXjxzb0uN1HGEYPbDSfeTu194RgdNaZp4VYVZzAtBWJ21RV1bFu7Pfr2BjtID5DohznnXeE2wXWK6pLHOqTLW9FHvOmA5W/tia6emjlgSg0EZhaXipnR7sinf0i+Iuxbj9Y/yWE3YTAbkXyHD4b5q6d5WackprquRQvWwaYF2P4oHxykQFtWEKelan4NyjkAyYLdAWn1QITJVtdk7NmuDJ7cu/bre7lLuQMFzh50ZnQc8Fc1+7QTxiC8eJj8gVa1IvrMlN81DOoRz28u9O0uFkEk4jN0xR6xFjIpS0MvhmlnkTC7wQ2ObtMD7sItdtTyi4NFMQR4nSWQrobbzNd6aUOikVUplceQ74+Qjptwqhr0lM="
 branches:
   only:
   - master
@@ -18,9 +15,4 @@ script:
 - ng build --prod --base-href /en-us/
 - ng build --prod --configuration=production-fr-ch --base-href /fr-ch/
 - cp src/404.html dist/404.html
-deploy:
-  provider: firebase
-  token: $FIREBASE_TOKEN
-    skip_cleanup: true
-    on:
-      branch: master
+- firebase deploy --token=$FIREBASE_TOKEN
