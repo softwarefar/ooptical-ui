@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
-import {AngularFireAuth} from 'angularfire2/auth';
 import {User} from 'firebase';
+import {AngularFireAuth} from '@angular/fire/auth';
 import {tap} from 'rxjs/operators';
 import {Observable, of} from 'rxjs';
 
@@ -17,11 +17,13 @@ export class UserService {
   }
 
 
-  getUser(): Observable<User> {
+  getUser(): Observable<User | null | undefined> {
     if (!this.user) {
       return this.afAuth.user.pipe(
-        tap((user: User) => {
-          this.user = user;
+        tap((user?: User | null) => {
+          if (!!user) {
+            this.user = user;
+          }
         })
       );
     } else {

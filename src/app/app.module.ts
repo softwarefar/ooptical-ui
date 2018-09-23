@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import {AppComponent} from './app.component';
 import {SharedModule} from './modules/shared/shared.module';
 import {RouterModule, Routes} from '@angular/router';
-import {AngularFireModule} from 'angularfire2';
+import {AngularFireModule} from '@angular/fire';
 import {environment} from '../environments/environment';
 import {UserAuthGuard} from './modules/core/security/user-auth-guard.service';
 import {CoreModule} from './modules/core/core.module';

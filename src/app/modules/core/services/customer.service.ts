@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
-import {AngularFirestore, CollectionReference, DocumentSnapshot, Query} from 'angularfire2/firestore';
 import {fromPromise} from 'rxjs/internal-compatibility';
-import {map, tap} from 'rxjs/operators';
+import {first, tap} from 'rxjs/operators';
+import {AngularFirestore, CollectionReference, Query} from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -15,37 +15,28 @@ export class CustomerService {
   }
 
 
-  surveyCustomers(queryFn?: (ref: CollectionReference) => Query) {
+  surveyCustomers(queryFn?: (ref: CollectionReference) => Query): Observable<Customer[]> {
     return this.afs.collection<Customer>('customers', queryFn).valueChanges();
   }
 
-  getCustomers(): Observable<Customer[]> {
-    return fromPromise(this.afs.collection<Customer>(`customers`).ref.get()).pipe(
-      map((documentSnapshot: DocumentSnapshot<Roles>) => {
-        if (!!documentSnapshot) {
-          return documentSnapshot.data();
-        } else {
-          return [];
-        }
-      }));
+  getCustomers(queryFn?: (ref: CollectionReference) => Query): Observable<Customer[]> {
+    return this.surveyCustomers(queryFn).pipe(
+      first()
+    );
   }
 
   surveyCustomer(id: string): Observable<Customer | undefined> {
     return this.afs.collection<Customer>(`customers`).doc<Customer>(`${id}`).valueChanges();
   }
 
-  getCustomer(id: string): Observable<Customer> {
-    return fromPromise(this.afs.collection<Customer>(`customers`).doc<Customer>(`${id}`).ref.get()).pipe(
-      map((documentSnapshot: DocumentSnapshot<Customer>) => {
-        if (!!documentSnapshot) {
-          return documentSnapshot.data();
-        } else {
-          return null;
+  getCustomer(id: string): Observable<Customer | undefined> {
+    return this.surveyCustomer(id).pipe(
+      first(),
+      tap((customer?: Customer) => {
+        if (!!customer) {
+          customer.lastAccessDate = new Date().getTime();
+          fromPromise(this.afs.collection<Customer>('customers').doc(customer.id).set(customer));
         }
-      }),
-      tap((customer: Customer) => {
-        customer.lastAccessDate = new Date().getTime();
-        fromPromise(this.afs.collection<Customer>('customers').doc(customer.id).set(customer));
       })
     );
   }

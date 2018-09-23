@@ -48,6 +48,15 @@
       <td mat-cell *matCellDef="let element"> {{element.email}}</td>
     </ng-container>
 
+    <!-- LastAccess Column -->
+    <ng-container matColumnDef="lastAccessDate">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header i18n="@@LAST_ACCESS">Last access</th>
+      <td mat-cell *matCellDef="let element">
+        <div *ngIf="!!element.lastAccessDate">{{moment(element.lastAccessDate).format('L')}}</div>
+        <mat-hint class="mat-caption" *ngIf="!!element.lastAccessDate">{{moment(element.lastAccessDate).format('LTS')}}</mat-hint>
+      </td>
+    </ng-container>
+
     <!-- Actions Column -->
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef></th>
@@ -72,8 +81,8 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"
         class="element-row"
-        (mouseenter)="mouseenter(row)"
-        (mouseleave)="mouseleave(row)"
+        (mouseenter)="mouseEnter(row)"
+        (mouseleave)="mouseLeave()"
         [class.expandable-row]="!!row.details"
         [class.expanded-row]="expandedIdElement === row.id"
         (click)="expendElement(row.id)">

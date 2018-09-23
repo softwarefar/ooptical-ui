@@ -29,12 +29,12 @@ export class UserAuthGuard implements CanActivate, CanActivateChild {
 
   can(): Observable<boolean> {
     return this.userService.getUser().pipe(
-      flatMap((user: User) => {
+      flatMap((user?: User | null) => {
         if (!!user) {
           return this.roleService.hasRoles(user, 'user');
         }
         return fromPromise(this.router.navigate(['/login'])).pipe(
-          map((nav: boolean) => false)
+          map(() => false)
         );
       })
     );

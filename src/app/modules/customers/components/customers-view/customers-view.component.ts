@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatDialog, MatSort, MatTableDataSource} from '@angular/material';
 import {animate, state, style, transition, trigger} from '@angular/animations';
-import {CollectionReference, Query} from 'angularfire2/firestore';
+import {CollectionReference, Query} from '@angular/fire/firestore';
 import {CustomerEditDialogComponent} from '../../dialogs/customer-edit-dialog/customer-edit-dialog.component';
 import {flatMap} from 'rxjs/operators';
 import {throwError} from 'rxjs';
@@ -31,12 +31,16 @@ export class CustomersViewComponent implements OnInit {
   }
 
   dataSource: MatTableDataSource<Customer> = new MatTableDataSource<Customer>();
-  displayedColumns: string[] = [/*'id', */'lastName', 'firstName', 'birthDate', 'address', 'phoneNumber', 'email', 'actions'];
+  displayedColumns: string[] = [/*'id', */'lastName', 'firstName', 'birthDate', 'address', 'phoneNumber', 'email', 'lastAccessDate', 'actions'];
   expandedIdElement?: string;
   overflownIdElement?: string;
 
   @ViewChild(MatSort)
   sort?: MatSort;
+
+  queryFn: (ref: CollectionReference) => Query = (ref: CollectionReference) => {
+    return ref.orderBy('lastName', 'asc');
+  };
 
   ngOnInit() {
     this.dataSource.data = [];
@@ -46,9 +50,7 @@ export class CustomersViewComponent implements OnInit {
     this.dataSource.sort = this.sort || null;
   }
 
-  queryFn: (ref: CollectionReference) => Query = (ref: CollectionReference) => {
-    return ref.orderBy('lastName', 'asc');
-  }
+
 
   applyFilter(value: string) {
     this.dataSource.filter = value;
@@ -67,8 +69,7 @@ export class CustomersViewComponent implements OnInit {
       width: '800px',
       data: {customer: element}
     }).afterClosed().pipe(
-      flatMap((result: CustomerEditResult) => {
-          console.log(result);
+      flatMap((result?: CustomerEditResult) => {
           if (!!result) {
             return this.customerService.updateCustomer(result.customer);
           } else {
@@ -87,11 +88,11 @@ export class CustomersViewComponent implements OnInit {
     });
   }
 
-  mouseenter($event: Customer) {
+  mouseEnter($event: Customer) {
     this.overflownIdElement = $event.id;
   }
 
-  mouseleave($event: Customer) {
+  mouseLeave() {
     this.overflownIdElement = undefined;
   }
 }

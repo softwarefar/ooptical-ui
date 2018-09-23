@@ -6,28 +6,28 @@
         <source>Customers</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/modules/core/components/logged-board/logged-board.component.html</context>
-          <context context-type="linenumber">15</context>
+          <context context-type="linenumber">22</context>
         </context-group>
       </trans-unit>
       <trans-unit id="PRODUCTS" datatype="html">
         <source>Products</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/modules/core/components/logged-board/logged-board.component.html</context>
-          <context context-type="linenumber">16</context>
+          <context context-type="linenumber">23</context>
         </context-group>
       </trans-unit>
       <trans-unit id="STORES" datatype="html">
         <source>Stores</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/modules/core/components/logged-board/logged-board.component.html</context>
-          <context context-type="linenumber">17</context>
+          <context context-type="linenumber">24</context>
         </context-group>
       </trans-unit>
       <trans-unit id="PROVIDERS" datatype="html">
         <source>Providers</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/modules/core/components/logged-board/logged-board.component.html</context>
-          <context context-type="linenumber">18</context>
+          <context context-type="linenumber">25</context>
         </context-group>
       </trans-unit>
       <trans-unit id="LOGIN_WITH_GOOGLE" datatype="html">
@@ -131,6 +131,13 @@
           <context context-type="linenumber">11</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="LAST_ACCESS" datatype="html">
+        <source>Last access</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modules/customers/components/customers-view/customers-view.component.html</context>
+          <context context-type="linenumber">53</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="ADD_CUSTOMER" datatype="html">
         <source>Add customer</source>
         <context-group purpose="location">
@@ -141,21 +148,21 @@
       <trans-unit id="DELETE_CUSTOMER" datatype="html">
         <source>Delete customer</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/modules/customers/components/customers-view/customer-delete-button/customer-delete-button.component.html</context>
+          <context context-type="sourcefile">app/modules/customers/components/customers-view/customer-row-toolbar/customer-delete-button/customer-delete-button.component.html</context>
           <context context-type="linenumber">1</context>
         </context-group>
       </trans-unit>
       <trans-unit id="EDIT_CUSTOMER" datatype="html">
         <source>Edit customer</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/modules/customers/components/customers-view/customer-edit-button/customer-edit-button.component.html</context>
+          <context context-type="sourcefile">app/modules/customers/components/customers-view/customer-row-toolbar/customer-edit-button/customer-edit-button.component.html</context>
           <context context-type="linenumber">1</context>
         </context-group>
       </trans-unit>
       <trans-unit id="OPEN_CUSTOMER" datatype="html">
         <source>Open customer</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">app/modules/customers/components/customers-view/customer-view-button/customer-view-button.component.html</context>
+          <context context-type="sourcefile">app/modules/customers/components/customers-view/customer-row-toolbar/customer-view-button/customer-view-button.component.html</context>
           <context context-type="linenumber">1</context>
         </context-group>
       </trans-unit>
