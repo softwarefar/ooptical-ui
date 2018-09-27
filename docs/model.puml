@@ -1,0 +1,87 @@
+@startuml
+Frame <|- Made
+Glass <|- Made
+Frame <|- Salable
+Glass <|- Salable
+Frame o-- FrameType
+Frame o-- Material
+Frame o-- Style
+Frame o-- Sphere
+Frame o-- Cylinder
+Frame o-- Tint
+Glass o-- MaterialGlass
+Material <|- MaterialGlass
+
+interface Made {
+barCode: string
+codeMaker: string
+maker: string
+}
+
+interface Salable {
+buyingPrice: number
+sellingPrice: number
+}
+
+interface Frame {
+brand: string
+gender: Gender
+type: FrameType
+style: Style
+material: Material
+color: Color
+size: number
+picture: string
+leftGlass: Glass
+rightGlass: Glass
+}
+
+interface Glass {
+name: string
+material: GlassMaterial
+tint: Tint
+diameter: number
+sphere: Sphere
+cylinder: Cylinder
+picture: string
+surface: string
+index: number
+}
+
+enum FrameType {
+OPTICAL
+SOLAR
+SPARE
+}
+enum Style {
+TRADITIONAL
+NYLON
+BREAKTHROUGH
+WIRE
+OTHER
+}
+enum Material {
+METAL
+PLASTIC
+COMBINED
+TITANIUM
+CARBON
+WOOD
+OTHER
+}
+enum MaterialGlass {
+ORGANIC
+MINERAL
+POLYCARBONATE
+}
+enum Tint {
+TINTED
+PHOTO_CHROMATIC
+}
+class Sphere {
+value: range(-30.00, +30.00, 0.25)
+}
+class Cylinder {
+value: range(0.00, +6.00, 0.25)
+}
+@enduml
