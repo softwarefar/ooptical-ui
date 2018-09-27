@@ -8,7 +8,7 @@ export class PlaceService {
 
   private google: any = (window as any).google;
   private autocompleteService: any;
-  private sessionToken: any;
+  private readonly sessionToken: any;
 
   constructor(
   ) {
@@ -18,7 +18,8 @@ export class PlaceService {
 
   findAddress(text: string): Observable<any[]> {
     const addresses: Subject<any[]> = new Subject<any[]>();
-    this.autocompleteService.getQueryPredictions({
+    this.autocompleteService.getPlacePredictions({
+      componentRestrictions: {country: 'ch'},
       input: text || '',
       sessionToken: this.sessionToken
     }, (predictions: any[], status: any) => {

@@ -5,7 +5,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
   templateUrl: './customer-row-toolbar.component.html',
   styleUrls: ['./customer-row-toolbar.component.css']
 })
-export class CustomerRowToolbarComponent implements OnInit {
+export class CustomerRowToolbarComponent {
 
   @Output()
   deleteRequest: EventEmitter<Customer> = new EventEmitter<Customer>();
@@ -15,11 +15,4 @@ export class CustomerRowToolbarComponent implements OnInit {
 
   @Input()
   customer?: Customer;
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-
 }

@@ -1,17 +1,19 @@
 import {Injectable} from '@angular/core';
 import {User} from 'firebase';
 import {Observable, of} from 'rxjs';
-import {first, map, tap} from 'rxjs/operators';
+import {first, flatMap, map, tap} from 'rxjs/operators';
 import {AngularFirestore} from '@angular/fire/firestore';
+import {UserService} from './user.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RoleService {
 
-  roles?: Partial<Roles>;
+  roles: Partial<Roles> | null = null;
 
   constructor(
+    private userService: UserService,
     private afs: AngularFirestore
   ) {
   }
@@ -32,14 +34,22 @@ export class RoleService {
     }
   }
 
-  hasRoles(user: User, role: keyof Roles): Observable<boolean> {
-    if (!!user && !!user.email) {
-      return this.getRoles(user.email).pipe(
+  hasRole(role: keyof Roles): Observable<boolean> {
+    return this.userService.getUser().pipe(
+      map((user: User | null) => {
+        return !!user ? user.email : null;
+      }),
+      flatMap((login: string | null) => {
+        return this.userHasRole(login, role);
+      })
+    );
+  }
+
+  userHasRole(login: string | null, role: keyof Roles): Observable<boolean> {
+    if (!!login) {
+      return this.getRoles(login).pipe(
         map((roles: Partial<Roles>) => {
-          if (!!roles) {
-            return !!roles[role];
-          }
-          return false;
+          return !!roles ? !!roles[role] : false;
         })
       );
     }

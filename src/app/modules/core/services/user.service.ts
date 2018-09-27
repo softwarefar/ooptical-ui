@@ -9,7 +9,7 @@ import {Observable, of} from 'rxjs';
 })
 export class UserService {
 
-  user?: User;
+  user: User | null = null;
 
   constructor(
     private afAuth: AngularFireAuth,
@@ -17,10 +17,10 @@ export class UserService {
   }
 
 
-  getUser(): Observable<User | null | undefined> {
+  getUser(): Observable<User | null> {
     if (!this.user) {
       return this.afAuth.user.pipe(
-        tap((user?: User | null) => {
+        tap((user: User | null) => {
           if (!!user) {
             this.user = user;
           }

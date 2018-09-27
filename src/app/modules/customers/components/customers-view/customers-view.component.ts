@@ -7,6 +7,7 @@ import {flatMap} from 'rxjs/operators';
 import {throwError} from 'rxjs';
 import * as _moment from 'moment';
 import {CustomerService} from '../../../core/services/customer.service';
+import {toolbarAppear} from '../../../shared/animation';
 
 @Component({
   selector: 'app-customers-view',
@@ -18,6 +19,7 @@ import {CustomerService} from '../../../core/services/customer.service';
       state('expanded', style({height: '*'})),
       transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
     ]),
+    toolbarAppear
   ],
 })
 export class CustomersViewComponent implements OnInit {

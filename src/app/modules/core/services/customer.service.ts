@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
-import {fromPromise} from 'rxjs/internal-compatibility';
 import {first, tap} from 'rxjs/operators';
 import {AngularFirestore, CollectionReference, Query} from '@angular/fire/firestore';
+import {fromPromise} from 'rxjs/internal-compatibility';
 
 @Injectable({
   providedIn: 'root'

@@ -1,6 +1,6 @@
 /*
 :host {
-  position: relative;
+  position: absolute;
 }
 mat-toolbar {
   position: absolute;

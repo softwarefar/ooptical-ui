@@ -12,7 +12,7 @@ import { environment } from '../environments/environment';
     flex: 1 1 1 e-09px;
   }`]
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
 
   environment = environment;
 

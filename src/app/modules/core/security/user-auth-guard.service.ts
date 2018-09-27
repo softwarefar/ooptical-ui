@@ -1,11 +1,10 @@
 import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, CanActivate, CanActivateChild, Router, RouterStateSnapshot} from '@angular/router';
-import {flatMap, map} from 'rxjs/operators';
-import {Observable} from 'rxjs';
+import {flatMap, tap} from 'rxjs/operators';
+import {Observable, of} from 'rxjs';
 import {RoleService} from '../services/role.service';
 import {UserService} from '../services/user.service';
 import {User} from 'firebase';
-import {fromPromise} from 'rxjs/internal-compatibility';
 
 @Injectable({
   providedIn: 'root'
@@ -31,10 +30,12 @@ export class UserAuthGuard implements CanActivate, CanActivateChild {
     return this.userService.getUser().pipe(
       flatMap((user?: User | null) => {
         if (!!user) {
-          return this.roleService.hasRoles(user, 'user');
+          return this.roleService.hasRole('user');
         }
-        return fromPromise(this.router.navigate(['/login'])).pipe(
-          map(() => false)
+        return of(false).pipe(
+          tap(() => {
+            this.router.navigate(['/login']);
+          })
         );
       })
     );

@@ -48,3 +48,12 @@ tr.element-row:not(.expanded-row):active {
   overflow: hidden;
   display: flex;
 }
+.th-toolbar {
+  width: 0px;
+  max-width: 0px;
+  padding-right: 0px !important;
+}
+.td-toolbar {
+  position: relative;
+  padding-right: 0px !important;
+}
