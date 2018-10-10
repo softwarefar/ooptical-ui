@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   firebase: {
+    apiMap: 'AIzaSyA5nbF48JkVcPiI0WoK1Vxxbl4W-M5HEcw',
     apiKey: 'AIzaSyA5nbF48JkVcPiI0WoK1Vxxbl4W-M5HEcw',
     authDomain: 'ooptical-aeb33.firebaseapp.com',
     databaseURL: 'https://ooptical-aeb33.firebaseio.com',
@@ -13,7 +14,7 @@ export const environment = {
     messagingSenderId: '511769902143'
   },
   algolia: {
-    apiKey: '646d5d0d92774149e2667788d248c0b4',
+    apiKey: 'c75e67cfec34299c3a36f8253ddb4312',
     appId: '5HX54EFK9T'
   }
 };
