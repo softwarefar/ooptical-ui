@@ -1,17 +1,25 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
-import {first, tap} from 'rxjs/operators';
+import {first, map, tap} from 'rxjs/operators';
 import {AngularFirestore, CollectionReference, Query} from '@angular/fire/firestore';
 import {fromPromise} from 'rxjs/internal-compatibility';
+import {AlgoliaClientService} from './algolia-client.service';
+import {Client, MultiResponse} from 'algoliasearch';
+import * as algoliasearch from 'algoliasearch';
+import {environment} from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CustomerService {
 
+  client: Client;
+
   constructor(
+    private algoliaClientService: AlgoliaClientService,
     private afs: AngularFirestore
   ) {
+    this.client = algoliasearch(environment.algolia.appId, environment.algolia.apiKey);
   }
 
 
@@ -22,6 +30,19 @@ export class CustomerService {
   getCustomers(queryFn?: (ref: CollectionReference) => Query): Observable<Customer[]> {
     return this.surveyCustomers(queryFn).pipe(
       first()
+    );
+  }
+
+  searchCustomers(query: string) {
+    return fromPromise(this.client.search([{
+      indexName: 'customer_search', query: query, params: {
+        attributesToSnippet: [],
+        attributesToHighlight: []
+      }
+    }])).pipe(
+      map((res: MultiResponse) => {
+        return res.results[0].hits;
+      })
     );
   }
 

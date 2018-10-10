@@ -1,13 +1,15 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatDialog, MatSort, MatTableDataSource} from '@angular/material';
 import {animate, state, style, transition, trigger} from '@angular/animations';
-import {CollectionReference, Query} from '@angular/fire/firestore';
 import {CustomerEditDialogComponent} from '../../dialogs/customer-edit-dialog/customer-edit-dialog.component';
-import {flatMap} from 'rxjs/operators';
-import {throwError} from 'rxjs';
-import * as _moment from 'moment';
+import {flatMap, map} from 'rxjs/operators';
+import {of, throwError} from 'rxjs';
 import {CustomerService} from '../../../core/services/customer.service';
 import {toolbarAppear} from '../../../shared/animation';
+import {MultiResponse} from 'algoliasearch';
+import {FormControl} from '@angular/forms';
+import {CollectionReference, Query} from '@angular/fire/firestore';
+import {AlgoliaClientService} from '../../../core/services/algolia-client.service';
 
 @Component({
   selector: 'app-customers-view',
@@ -23,8 +25,7 @@ import {toolbarAppear} from '../../../shared/animation';
   ],
 })
 export class CustomersViewComponent implements OnInit {
-
-  moment = _moment;
+  searchForm: FormControl = new FormControl();
 
   constructor(
     private dialog: MatDialog,
@@ -33,7 +34,7 @@ export class CustomersViewComponent implements OnInit {
   }
 
   dataSource: MatTableDataSource<Customer> = new MatTableDataSource<Customer>();
-  displayedColumns: string[] = [/*'id', */'lastName', 'firstName', 'birthDate', 'address', 'phoneNumber', 'email', 'lastAccessDate', 'actions'];
+  displayedColumns: string[] = [/*'id', */'gender', 'lastName', 'firstName', 'birthDate', 'address', 'phoneNumber', 'email', 'lastAccessDate', 'actions'];
   expandedIdElement?: string;
   overflownIdElement?: string;
 
@@ -41,21 +42,26 @@ export class CustomersViewComponent implements OnInit {
   sort?: MatSort;
 
   queryFn: (ref: CollectionReference) => Query = (ref: CollectionReference) => {
-    return ref.orderBy('lastName', 'asc');
-  };
+    return ref.orderBy('lastAccessDate', 'asc');
+  }
 
   ngOnInit() {
+    this.searchForm.valueChanges.pipe(
+      flatMap((value: string) => {
+        if (!!value) {
+          return this.customerService.searchCustomers(value);
+        } else {
+          return this.customerService.getCustomers(this.queryFn);
+        }
+      })
+    ).subscribe((res: Customer[]) => {
+      this.dataSource.data = res;
+    });
     this.dataSource.data = [];
-    this.customerService.surveyCustomers(this.queryFn).subscribe((value: Customer[]) => {
+    this.customerService.getCustomers(this.queryFn).subscribe((value: Customer[]) => {
       this.dataSource.data = value;
     });
     this.dataSource.sort = this.sort || null;
-  }
-
-
-
-  applyFilter(value: string) {
-    this.dataSource.filter = value;
   }
 
   expendElement(id: string) {

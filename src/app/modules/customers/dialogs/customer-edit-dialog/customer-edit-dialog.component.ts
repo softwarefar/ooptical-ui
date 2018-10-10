@@ -1,5 +1,5 @@
 import {ChangeDetectorRef, Component, Inject, OnInit} from '@angular/core';
-import {MAT_DIALOG_DATA} from '@angular/material';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import * as moment from 'moment';
 import {Moment} from 'moment';
 import {FormControl} from '@angular/forms';
@@ -11,6 +11,19 @@ import {flatMap} from 'rxjs/operators';
   styleUrls: ['./customer-edit-dialog.component.css']
 })
 export class CustomerEditDialogComponent implements OnInit {
+  importEnabled: boolean = true;
+  customerJson: string = '';
+  /*`${JSON.stringify({
+  firstName: '',
+  lastName: '',
+  birthDate: new Date().getTime(),
+  address: '',
+  phoneNumber: '',
+  email: '',
+  about: '',
+  gender: 'MALE'
+  })}`;
+*/
   customer: Partial<Customer>;
   birthDateForm: FormControl = new FormControl();
   addressForm: FormControl = new FormControl();
@@ -20,8 +33,9 @@ export class CustomerEditDialogComponent implements OnInit {
   constructor(
     private ref: ChangeDetectorRef,
     private placeService: PlaceService,
+    public dialogRef: MatDialogRef<CustomerEditDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: CustomerEditData) {
-    this.customer = Object.assign({}, data.customer);
+    this.customer = Object.assign({gender: 'MALE'}, data.customer);
 
     if (!!this.customer.address) {
       this.addressForm.setValue(this.customer.address);
@@ -46,4 +60,17 @@ export class CustomerEditDialogComponent implements OnInit {
       this.customer.birthDate = +date.format('x');
     });
   }
+
+  import() {
+    this.dialogRef.close({customer: JSON.parse(this.customerJson)});
+  }
+
+  saveAsFeMale() {
+    this.dialogRef.close({customer: {gender: 'FEMALE', ...this.customer}});
+  }
+
+  saveAsMale() {
+    this.dialogRef.close({customer: {gender: 'MALE', ...this.customer}});
+  }
 }
+

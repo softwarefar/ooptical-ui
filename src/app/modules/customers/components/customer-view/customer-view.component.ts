@@ -33,7 +33,7 @@ export class CustomerViewComponent extends AbstractNavigableComponent<Customer> 
     ).subscribe((customer: Partial<Customer> | undefined) => {
       if (!!customer) {
         if (!this.customer || (customer.id !== this.customer.id)) {
-          this.dynTabService.addNavLinkEvent.next(this.getNavLink(customer));
+          this.dynTabService.openTab(this.getNavLink(customer));
         }
       }
       this.customer = customer;

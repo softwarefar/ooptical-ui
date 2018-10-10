@@ -10,7 +10,6 @@ import {NavLinkMultiple} from '../models/nav-link/nav-link-multiple';
 })
 export class DynTabService {
 
-  addNavLinkEvent: Subject<NavLink> = new Subject<NavLink>();
   removeNavLinkIndexEvent: Subject<number> = new Subject<number>();
   addNavLinkIndexEvent: Subject<number> = new Subject<number>();
 
@@ -22,27 +21,23 @@ export class DynTabService {
   ];
 
   constructor() {
-    this.addNavLinkEvent.pipe(
-      filter((navLink: NavLink) => {
-        return !!navLink;
-      })
-    ).subscribe((navLink: NavLink) => {
-      let idx: number = this.getIndexOfPath(navLink.path);
-      if (idx !== -1) {
-        this.addNavLinkIndexEvent.next(idx);
-      } else if (this.isSameTypeOfPresent(navLink) && !NavLinkMultiple[navLink.type]) {
-        const sameType: NavLink = this.getSameTypeOf(navLink);
-        if (sameType) { // always true
-          idx = this.getIndexOfPath(sameType.path);
-          this.removeNavLinkIndex(idx);
-          this.navLinks.push(navLink);
-          this.addNavLinkIndexEvent.next(this.navLinks.length - 1);
-        }
-      } else {
+  }
+  openTab(navLink: NavLink) {
+    let idx: number = this.getIndexOfPath(navLink.path);
+    if (idx !== -1) {
+      this.addNavLinkIndexEvent.next(idx);
+    } else if (this.isSameTypeOfPresent(navLink) && !NavLinkMultiple[navLink.type]) {
+      const sameType: NavLink = this.getSameTypeOf(navLink);
+      if (sameType) { // always true
+        idx = this.getIndexOfPath(sameType.path);
+        this.removeNavLinkIndex(idx);
         this.navLinks.push(navLink);
         this.addNavLinkIndexEvent.next(this.navLinks.length - 1);
       }
-    });
+    } else {
+      this.navLinks.push(navLink);
+      this.addNavLinkIndexEvent.next(this.navLinks.length - 1);
+    }
   }
 
   getIndexOfPath(path: string) {
@@ -51,7 +46,7 @@ export class DynTabService {
     });
   }
 
-  removeNavLinkAndEmit(navLink: NavLink) {
+  closeTab(navLink: NavLink) {
     const idx: number = this.getIndexOfPath(navLink.path);
     this.removeNavLinkIndexEvent.next(idx);
     this.removeNavLinkIndex(idx);

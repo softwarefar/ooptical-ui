@@ -1,6 +1,6 @@
 interface Frame extends Made, Salable {
   brand: string;
-  gender: Gender;
+  gender: ProductGender;
   type: FrameType;
   style: FrameStyle;
   material: Material;
