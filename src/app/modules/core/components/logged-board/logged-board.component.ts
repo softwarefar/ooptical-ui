@@ -75,7 +75,7 @@ export class LoggedBoardComponent implements OnInit {
     $event.stopImmediatePropagation();
     $event.stopPropagation();
     $event.preventDefault();
-    this.dynTabService.removeNavLinkAndEmit(navLink);
+    this.dynTabService.closeTab(navLink);
   }
 
   logout() {

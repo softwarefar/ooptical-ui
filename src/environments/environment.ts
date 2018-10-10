@@ -11,6 +11,10 @@ export const environment = {
     projectId: 'ooptical-aeb33',
     storageBucket: 'ooptical-aeb33.appspot.com',
     messagingSenderId: '511769902143'
+  },
+  algolia: {
+    apiKey: '646d5d0d92774149e2667788d248c0b4',
+    appId: '5HX54EFK9T'
   }
 };
 

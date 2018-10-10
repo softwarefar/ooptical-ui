@@ -2,13 +2,14 @@
 <div mat-dialog-content fxLayout="column">
   <div fxLayout="row" fxLayoutGap="10px">
     <mat-form-field fxFlex>
-      <input matInput i18n-placeholder="@@FIRST_NAME"  placeholder="FirstName" [(ngModel)]="customer.firstName">
+      <input matInput i18n-placeholder="@@FIRST_NAME" placeholder="FirstName" [(ngModel)]="customer.firstName">
     </mat-form-field>
     <mat-form-field fxFlex>
       <input matInput i18n-placeholder="@@LAST_NAME" placeholder="LastName" [(ngModel)]="customer.lastName">
     </mat-form-field>
     <mat-form-field fxFlex>
-      <input matInput [matDatepicker]="picker" i18n-placeholder="@@BIRTH_DATE" placeholder="BirthDate" [formControl]="birthDateForm">
+      <input matInput [matDatepicker]="picker" i18n-placeholder="@@BIRTH_DATE" placeholder="BirthDate"
+             [formControl]="birthDateForm">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
@@ -32,12 +33,25 @@
   </div>
   <div fxLayout="row" fxLayoutGap="10px">
     <mat-form-field fxFlex>
-      <textarea matInput i18n-placeholder="@@DETAILS" placeholder="Details" [(ngModel)]="customer.details"></textarea>
+      <textarea rows="5" matInput i18n-placeholder="@@DETAILS" placeholder="Details" [(ngModel)]="customer.about"></textarea>
+    </mat-form-field>
+  </div>
+  <div fxLayout="row" fxLayoutGap="10px" *ngIf="importEnabled">
+    <mat-form-field fxFlex>
+      <textarea rows="5" matInput placeholder="Json" [(ngModel)]="customerJson"></textarea>
     </mat-form-field>
   </div>
 </div>
 <div mat-dialog-actions>
   <span class="flex-spacer"></span>
-  <button mat-button [mat-dialog-close]="{}" i18n="@@CANCEL">Cancel</button>
-  <button mat-button [mat-dialog-close]="{customer: customer}" i18n="@@SAVE">Save</button>
+  <button mat-button color="warn" [mat-dialog-close]="{}" i18n="@@CANCEL">Cancel</button>
+  <button mat-button color="accent" (click)="saveAsFeMale()">
+    <i class="fas fa-lg fa-female"></i>&nbsp;&nbsp;&nbsp;
+    <span i18n="@@SAVE_AS_FEMALE">Save as Female</span>
+  </button>
+  <button mat-button color="primary" (click)="saveAsMale()">
+    <i class="fas fa-lg fa-male"></i>&nbsp;&nbsp;&nbsp;
+    <span i18n="@@SAVE_AS_MALE">Save as Male</span>
+  </button>
+  <button mat-button (click)="import()" *ngIf="importEnabled">Import</button>
 </div>

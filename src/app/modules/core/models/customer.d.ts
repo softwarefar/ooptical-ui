@@ -6,7 +6,8 @@ interface Customer {
   address: string;
   phoneNumber: string;
   email: string;
-  details: string;
+  about: string;
+  gender: Gender;
   lastAccessDate: number;
   creationDate: number;
   updateDate: number;

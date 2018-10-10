@@ -2,12 +2,12 @@
   display: flex;
   flex-direction: column;
   flex: 1 1 100%;
+  position: relative;
 }
 
 .table-container {
   overflow-y: auto;
   overflow-x: hidden;
-  position: relative;
 }
 
 form {
@@ -57,4 +57,10 @@ tr.element-row:not(.expanded-row):active {
 .td-toolbar {
   position: relative;
   padding-right: 0px !important;
+}
+.fa-female {
+  color: #f44336;
+}
+.fa-male {
+  color: #3f51b5;
 }
