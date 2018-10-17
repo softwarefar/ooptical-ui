@@ -8,4 +8,4 @@ export const toolbarAppear = trigger('toolbarAppear', [
   transition(':leave', [
     animate(300, style({transform: 'translateX(100%)'}))
   ])
-])
+]);
