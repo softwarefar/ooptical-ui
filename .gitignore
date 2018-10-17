@@ -4,15 +4,15 @@
 
 # compiled output
 /dist
+/functions/lib
 /tmp
 /out-tsc
 
 # dependencies
-/node_modules
+**/node_modules
 
 # firebase
 .firebase
-/functions/*
 
 # IDEs and editors
 /.idea
