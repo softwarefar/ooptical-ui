@@ -17,7 +17,7 @@
   "keywords": [],
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --port 80 --host 0.0.0.0",
     "start:fr-ch": "ng serve --configuration=fr-ch",
     "build": "ng build --prod --base-href /en-us/",
     "build:fr-ch": "ng build --prod --configuration=production-fr-ch --base-href /fr-ch/",
