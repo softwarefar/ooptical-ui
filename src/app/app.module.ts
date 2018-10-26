@@ -5,24 +5,28 @@ import {SharedModule} from './modules/shared/shared.module';
 import {RouterModule, Routes} from '@angular/router';
 import {AngularFireModule} from '@angular/fire';
 import {environment} from '../environments/environment';
-import {UserAuthGuard} from './modules/core/security/user-auth-guard.service';
+import {UserAuthGuard} from './modules/core/security';
 import {CoreModule} from './modules/core/core.module';
-import {AnonymousBoardComponent, LoggedBoardComponent} from './modules/core/components';
+import {AnonymousBoardComponent, LoggedBoardComponent, SelectStoreComponent} from './modules/core/components';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {BrowserModule} from '@angular/platform-browser';
+import {AdminBoardComponent} from './modules/core/components';
+import {AdminAuthGuard, StoreMemberGuard} from './modules/core/security';
+import {CustomersViewComponent} from './modules/customers/components';
+import {CustomersModule} from './modules/customers/customers.module';
 
 const routes: Routes = [
-  {
-    path: '', component: LoggedBoardComponent,
-    canActivate: [UserAuthGuard],
-    canActivateChild: [UserAuthGuard],
-    children: [
-      {path: '', redirectTo: '/customers', pathMatch: 'full'},
-      {path: 'customers', loadChildren: './modules/customers/customers.module#CustomersModule'},
-      {path: 'products', loadChildren: './modules/products/products.module#ProductsModule'},
-    ]
-  },
+  {path: '', component: SelectStoreComponent, canActivate: [UserAuthGuard]},
   {path: 'login', component: AnonymousBoardComponent},
+  {path: 'admin', component: AdminBoardComponent, canActivate: [AdminAuthGuard]},
+  {
+    path: ':storeId', component: LoggedBoardComponent, canActivate: [StoreMemberGuard], children: [
+      {path: '', redirectTo: 'customers', pathMatch: 'full'},
+      {path: 'customers', component: CustomersViewComponent},
+      {path: 'customers/:customerId', loadChildren: './modules/customer/customer.module#CustomerModule'},
+      {path: 'products', loadChildren: './modules/products/products.module#ProductsModule'}
+    ]
+  }
 ];
 
 @NgModule({
@@ -34,7 +38,8 @@ const routes: Routes = [
     BrowserAnimationsModule,
     CoreModule,
     SharedModule,
-    RouterModule.forRoot(routes),
+    CustomersModule,
+    RouterModule.forRoot(routes, { enableTracing: false }),
     AngularFireModule.initializeApp(environment.firebase), // imports firebase/app needed for everything
   ],
   providers: [],

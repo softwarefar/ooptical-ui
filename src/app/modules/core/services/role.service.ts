@@ -1,5 +1,4 @@
 import {Injectable} from '@angular/core';
-import {User} from 'firebase';
 import {Observable, of} from 'rxjs';
 import {first, flatMap, map, tap} from 'rxjs/operators';
 import {AngularFirestore} from '@angular/fire/firestore';
@@ -35,10 +34,7 @@ export class RoleService {
   }
 
   hasRole(role: keyof Roles): Observable<boolean> {
-    return this.userService.getUser().pipe(
-      map((user: User | null) => {
-        return !!user ? user.email : null;
-      }),
+    return this.userService.getLogin().pipe(
       flatMap((login: string | null) => {
         return this.userHasRole(login, role);
       })

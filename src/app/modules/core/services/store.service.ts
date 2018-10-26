@@ -1,8 +1,9 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {fromPromise} from 'rxjs/internal-compatibility';
-import {first} from 'rxjs/operators';
+import {first, flatMap, map} from 'rxjs/operators';
 import {AngularFirestore, CollectionReference, Query} from '@angular/fire/firestore';
+import {WorkplacesService} from './workplaces.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,13 +11,35 @@ import {AngularFirestore, CollectionReference, Query} from '@angular/fire/firest
 export class StoreService {
 
   constructor(
-    private afs: AngularFirestore
+    private afs: AngularFirestore,
+    private workplacesService: WorkplacesService
   ) {
   }
 
 
   surveyStores(queryFn?: (ref: CollectionReference) => Query): Observable<Store[]> {
     return this.afs.collection<Store>('stores', queryFn).valueChanges();
+  }
+
+  getFirstAllowedStores(): Observable<Store> {
+    return this.getAllowedStores().pipe(
+      map((stores: Store[]) => {
+        return stores.shift();
+      })
+    );
+  }
+  getAllowedStores(): Observable<Store[]> {
+    return this.workplacesService.getStores().pipe(
+      flatMap((storeKeys: string[]) => {
+        return this.getStores().pipe(
+          map((stores: Store[]) => {
+            return stores.filter((s: Store) => {
+              return storeKeys.includes(s.id);
+            });
+          })
+        );
+      }),
+    );
   }
 
   getStores(queryFn?: (ref: CollectionReference) => Query): Observable<Store[]> {

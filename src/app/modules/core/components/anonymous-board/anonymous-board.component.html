@@ -1,7 +1,7 @@
 <div fxFlex fxLayout="column" fxLayoutAlign="space-around center">
-  <button mat-button (click)="login()">
-    <i class="fab fa-google"></i>
+  <button mat-raised-button (click)="login()" color="primary">
+    <fa-icon [icon]="['fab', 'google']" size="lg"></fa-icon>&nbsp;&nbsp;
     <span i18n="@@LOGIN_WITH_GOOGLE">Login with google</span>
   </button>
-
+  <span mat-subheader>{{credential?.user?.email}}</span>
 </div>

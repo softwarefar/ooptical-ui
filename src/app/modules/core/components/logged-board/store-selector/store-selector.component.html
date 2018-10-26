@@ -1,6 +1,6 @@
 <mat-form-field floatLabel="never">
   <mat-select i18n-placeholder="@@STORE" placeholder="Store" [formControl]="storeControl">
-    <mat-option *ngFor="let store of stores" [value]="store">
+    <mat-option *ngFor="let store of stores" [value]="store" routerLink="/{{store.id}}">
       {{store.name}}
     </mat-option>
   </mat-select>

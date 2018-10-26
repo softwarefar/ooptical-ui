@@ -1,4 +1,3 @@
-import {filter} from 'rxjs/operators';
 import {Injectable} from '@angular/core';
 import {Subject} from 'rxjs';
 import {NavLinkType} from '../models/nav-link/nav-link-type';
@@ -14,13 +13,17 @@ export class DynTabService {
   addNavLinkIndexEvent: Subject<number> = new Subject<number>();
 
   navLinks: NavLink[] = [
-    {type: NavLinkType.CUSTOMERS, path: '/customers', label: 'Customers'},
-    {type: NavLinkType.PRODUCTS, path: '/products', label: 'Products'},
-    {type: NavLinkType.STORES, path: '/stores', label: 'Stores'},
-    {type: NavLinkType.PROVIDERS, path: '/providers', label: 'Providers'}
+    {type: NavLinkType.CUSTOMERS, path: 'customers', label: 'Customers'},
+    {type: NavLinkType.PRODUCTS, path: 'products', label: 'Products'},
+    {type: NavLinkType.PROVIDERS, path: 'providers', label: 'Providers'}
   ];
 
-  constructor() {
+  selectFirstTab(type: NavLinkType) {
+    const sameType: NavLink = this.getSameType(type);
+    if (sameType) { // always true
+      const idx = this.getIndexOfPath(sameType.path);
+      this.addNavLinkIndexEvent.next(idx);
+    }
   }
   openTab(navLink: NavLink) {
     let idx: number = this.getIndexOfPath(navLink.path);
@@ -56,9 +59,9 @@ export class DynTabService {
     this.navLinks.splice(idx, 1);
   }
 
-  private getSameTypeOf(navLink: NavLink): NavLink {
+  private getSameType(type: NavLinkType): NavLink {
     const result: NavLink | undefined = this.navLinks.find((n: NavLink) => {
-      return n.type === navLink.type;
+      return n.type === type;
     });
     if (!!result) {
       return result;
@@ -68,6 +71,10 @@ export class DynTabService {
       name: '',
       stack: null
     };
+  }
+
+  private getSameTypeOf(navLink: NavLink): NavLink {
+    return this.getSameType(navLink.type);
   }
 
   private isSameTypeOfPresent(navLink: NavLink): boolean {

@@ -1,5 +1,4 @@
 import {Component, Input} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-customer-view-button',
@@ -8,17 +7,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 })
 export class CustomerViewButtonComponent {
   constructor(
-    private router: Router,
-    private route: ActivatedRoute
-  ) {
-  }
+  ) {}
 
   @Input()
   customer?: Customer;
-
-  openCustomer() {
-    if (this.customer) {
-      this.router.navigate([`/customers/${this.customer.id}`]);
-    }
-  }
 }

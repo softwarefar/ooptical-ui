@@ -1,8 +1,6 @@
 import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {DynTabService} from '../../services/dyn-tab-service';
 import {ActivatedRoute, Event, NavigationEnd, NavigationExtras, Router, RouterEvent} from '@angular/router';
-import {AngularFireAuth} from 'angularfire2/auth';
-import {User} from 'firebase';
 import {filter, first, map} from 'rxjs/operators';
 import {NavLink} from '../../models/nav-link/nav-link';
 import {NavLinkCloseable} from '../../models/nav-link/nav-link-closeable';
@@ -17,20 +15,15 @@ export class LoggedBoardComponent implements OnInit {
     public dynTabService: DynTabService,
     private router: Router,
     private route: ActivatedRoute,
-    private changeDetectorRef: ChangeDetectorRef,
-    private afAuth: AngularFireAuth
+    private changeDetectorRef: ChangeDetectorRef
   ) {
   }
 
   NavLinkCloseable = NavLinkCloseable;
 
   selectedIndex: number = 0;
-  user?: User | null;
 
   ngOnInit() {
-    this.afAuth.user.subscribe((user: User | null) => {
-      this.user = user;
-    });
     // fix index after nav from new url
     this.router.events.pipe(
       filter((event: Event) => event instanceof NavigationEnd),
@@ -76,11 +69,5 @@ export class LoggedBoardComponent implements OnInit {
     $event.stopPropagation();
     $event.preventDefault();
     this.dynTabService.closeTab(navLink);
-  }
-
-  logout() {
-    this.afAuth.auth.signOut().then(() => {
-      this.router.navigate(['/login']);
-    });
   }
 }

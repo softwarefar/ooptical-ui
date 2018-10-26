@@ -2,14 +2,14 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatDialog, MatSort, MatTableDataSource} from '@angular/material';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {CustomerEditDialogComponent} from '../../dialogs/customer-edit-dialog/customer-edit-dialog.component';
-import {flatMap, map} from 'rxjs/operators';
-import {of, throwError} from 'rxjs';
+import {flatMap} from 'rxjs/operators';
+import {throwError} from 'rxjs';
 import {CustomerService} from '../../../core/services/customer.service';
 import {toolbarAppear} from '../../../shared/animation';
-import {MultiResponse} from 'algoliasearch';
 import {FormControl} from '@angular/forms';
 import {CollectionReference, Query} from '@angular/fire/firestore';
-import {AlgoliaClientService} from '../../../core/services/algolia-client.service';
+import {DynTabService} from '../../../core/services/dyn-tab-service';
+import {NavLinkType} from '../../../core/models/nav-link/nav-link-type';
 
 @Component({
   selector: 'app-customers-view',
@@ -29,9 +29,9 @@ export class CustomersViewComponent implements OnInit {
 
   constructor(
     private dialog: MatDialog,
-    private customerService: CustomerService
-  ) {
-  }
+    private customerService: CustomerService,
+    private dynTabService: DynTabService
+  ) { }
 
   dataSource: MatTableDataSource<Customer> = new MatTableDataSource<Customer>();
   displayedColumns: string[] = [/*'id', */'gender', 'lastName', 'firstName', 'birthDate', 'address', 'phoneNumber', 'email', 'lastAccessDate', 'actions'];
@@ -43,9 +43,10 @@ export class CustomersViewComponent implements OnInit {
 
   queryFn: (ref: CollectionReference) => Query = (ref: CollectionReference) => {
     return ref.orderBy('lastAccessDate', 'asc');
-  }
+  };
 
   ngOnInit() {
+    this.dynTabService.selectFirstTab(NavLinkType.CUSTOMERS);
     this.searchForm.valueChanges.pipe(
       flatMap((value: string) => {
         if (!!value) {

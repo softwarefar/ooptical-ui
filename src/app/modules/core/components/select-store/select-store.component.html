@@ -1,0 +1,24 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <span>
+            <fa-icon [icon]="['fas', 'store']"></fa-icon>
+            &nbsp;&nbsp;<span i18n="@@SELECT_STORE">Select store</span>
+        </span>
+        <span class="flex-spacer"></span>
+        <app-user-button></app-user-button>
+        <app-language-selector></app-language-selector>
+    </mat-toolbar-row>
+</mat-toolbar>
+<div fxFlex fxLayout="column" fxLayoutAlign="center" style="position: relative">
+    <div fxLayoutAlign="center">
+        <mat-nav-list fxFlex="30">
+            <a mat-list-item *ngFor="let store of stores" routerLink="/{{store.id}}">
+                <fa-icon [icon]="['fas', 'store']"></fa-icon>
+                <h4 mat-line>{{store.name}}</h4>
+                <p mat-line> {{store.address}} </p>
+            </a>
+        </mat-nav-list>
+    </div>
+    <app-store-add-button *ngIf="admin" class="floating-bottom-right"></app-store-add-button>
+</div>
+<app-footer></app-footer>

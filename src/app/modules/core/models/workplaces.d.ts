@@ -1,0 +1,3 @@
+interface Workplaces {
+  stores: string[];
+}
