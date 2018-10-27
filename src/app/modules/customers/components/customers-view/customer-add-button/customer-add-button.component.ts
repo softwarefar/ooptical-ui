@@ -25,7 +25,6 @@ export class CustomerAddButtonComponent {
       data: {customer: {birthDate: new Date().getTime()}}
     }).afterClosed().subscribe((result: CustomerEditResult | undefined) => {
       if (result && result.customer) {
-        console.log(result.customer);
         this.customerService.createCustomer(result.customer).subscribe(() => {
           console.log('The customer was created');
         });

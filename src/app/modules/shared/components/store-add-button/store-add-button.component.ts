@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {MatDialog} from '@angular/material';
 import {StoreService} from '../../../core/services/store.service';
 import {faPlus} from '@fortawesome/free-solid-svg-icons';
+import {StoreEditDialogComponent} from '../../../core/dialogs';
 
 @Component({
   selector: 'app-store-add-button',
@@ -17,19 +18,18 @@ export class StoreAddButtonComponent {
     private storeService: StoreService  ) {
   }
 
-  openCreateNewCustomerDialog() {
-/*
-    this.dialog.open<CustomerEditDialogComponent, CustomerEditData, CustomerEditResult>(CustomerEditDialogComponent, {
+  openCreateNewStoreDialog() {
+    this.dialog.open<StoreEditDialogComponent, StoreEditData, StoreEditResult>(StoreEditDialogComponent, {
       width: '800px',
-      data: {customer: {birthDate: new Date().getTime()}}
-    }).afterClosed().subscribe((result: CustomerEditResult | undefined) => {
-      if (result && result.customer) {
-        console.log(result.customer);
-        this.customerService.createCustomer(result.customer).subscribe(() => {
-          console.log('The customer was created');
+      data: {store: {}}
+    }).afterClosed().subscribe((result: StoreEditResult | undefined) => {
+      if (result && result.store) {
+/*
+        this.storeService.createStore(result.store).subscribe(() => {
+          console.log('The store was created');
         });
+*/
       }
     });
-*/
   }
 }

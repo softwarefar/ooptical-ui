@@ -3,7 +3,7 @@ import {MatDialog, MatSort, MatTableDataSource} from '@angular/material';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {CustomerEditDialogComponent} from '../../dialogs/customer-edit-dialog/customer-edit-dialog.component';
 import {flatMap} from 'rxjs/operators';
-import {throwError} from 'rxjs';
+import {EMPTY} from 'rxjs';
 import {CustomerService} from '../../../core/services/customer.service';
 import {toolbarAppear} from '../../../shared/animation';
 import {FormControl} from '@angular/forms';
@@ -83,10 +83,10 @@ export class CustomersViewComponent implements OnInit {
       data: {customer: element}
     }).afterClosed().pipe(
       flatMap((result?: CustomerEditResult) => {
-          if (!!result) {
+          if (!!result && !!result.customer) {
             return this.customerService.updateCustomer(result.customer);
           } else {
-            return throwError(null);
+            return EMPTY;
           }
         }
       )

@@ -1,57 +1,60 @@
-<h1 mat-dialog-title *ngIf="!!customer.id">Edit customer</h1>
+<h1 mat-dialog-title i18n="@@EDIT_OR_CREATE_CUSTOMER">{'' + !!customer.id, select, true {Edit} false {Create}} customer</h1>
 <div mat-dialog-content fxLayout="column">
-  <div fxLayout="row" fxLayoutGap="10px">
-    <mat-form-field fxFlex>
-      <input matInput i18n-placeholder="@@FIRST_NAME" placeholder="FirstName" [(ngModel)]="customer.firstName">
-    </mat-form-field>
-    <mat-form-field fxFlex>
-      <input matInput i18n-placeholder="@@LAST_NAME" placeholder="LastName" [(ngModel)]="customer.lastName">
-    </mat-form-field>
-    <mat-form-field fxFlex>
-      <input matInput [matDatepicker]="picker" i18n-placeholder="@@BIRTH_DATE" placeholder="BirthDate"
-             [formControl]="birthDateForm">
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
-  </div>
-  <div fxLayout="row" fxLayoutGap="10px">
-    <mat-form-field fxFlex>
-      <input matInput i18n-placeholder="@@ADDRESS" placeholder="Address"
-             [formControl]="addressForm" [matAutocomplete]="auto">
-    </mat-form-field>
-    <mat-autocomplete #auto="matAutocomplete">
-      <mat-option *ngFor="let address of addresses" [value]="address.description">{{address.description}}</mat-option>
-    </mat-autocomplete>
-  </div>
-  <div fxLayout="row" fxLayoutGap="10px">
-    <mat-form-field fxFlex>
-      <input matInput i18n-placeholder="@@PHONE_NUMBER" placeholder="Phone number" [(ngModel)]="customer.phoneNumber">
-    </mat-form-field>
-    <mat-form-field fxFlex>
-      <input matInput i18n-placeholder="@@EMAIL" placeholder="Email" [(ngModel)]="customer.email">
-    </mat-form-field>
-  </div>
-  <div fxLayout="row" fxLayoutGap="10px">
-    <mat-form-field fxFlex>
-      <textarea rows="5" matInput i18n-placeholder="@@DETAILS" placeholder="Details" [(ngModel)]="customer.about"></textarea>
-    </mat-form-field>
-  </div>
-  <div fxLayout="row" fxLayoutGap="10px" *ngIf="importEnabled">
-    <mat-form-field fxFlex>
-      <textarea rows="5" matInput placeholder="Json" [(ngModel)]="customerJson"></textarea>
-    </mat-form-field>
-  </div>
+    <div fxLayout="row" fxLayoutGap="10px">
+        <mat-form-field fxFlex>
+            <input matInput i18n-placeholder="@@FIRST_NAME" placeholder="FirstName" [(ngModel)]="customer.firstName">
+        </mat-form-field>
+        <mat-form-field fxFlex>
+            <input matInput i18n-placeholder="@@LAST_NAME" placeholder="LastName" [(ngModel)]="customer.lastName">
+        </mat-form-field>
+        <mat-form-field fxFlex>
+            <input matInput [matDatepicker]="picker" i18n-placeholder="@@BIRTH_DATE" placeholder="BirthDate"
+                   [formControl]="birthDateForm">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutGap="10px">
+        <mat-form-field fxFlex>
+            <input matInput i18n-placeholder="@@ADDRESS" placeholder="Address"
+                   [formControl]="addressForm" [matAutocomplete]="auto">
+        </mat-form-field>
+        <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let address of addresses" [value]="address.description">{{address.description}}
+            </mat-option>
+        </mat-autocomplete>
+    </div>
+    <div fxLayout="row" fxLayoutGap="10px">
+        <mat-form-field fxFlex>
+            <input matInput i18n-placeholder="@@PHONE_NUMBER" placeholder="Phone number"
+                   [(ngModel)]="customer.phoneNumber">
+        </mat-form-field>
+        <mat-form-field fxFlex>
+            <input matInput i18n-placeholder="@@EMAIL" placeholder="Email" [(ngModel)]="customer.email">
+        </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutGap="10px">
+        <mat-form-field fxFlex>
+            <textarea rows="5" matInput i18n-placeholder="@@DETAILS" placeholder="Details"
+                      [(ngModel)]="customer.about"></textarea>
+        </mat-form-field>
+    </div>
+    <div fxLayout="row" fxLayoutGap="10px" *ngIf="importEnabled">
+        <mat-form-field fxFlex>
+            <textarea rows="5" matInput placeholder="Json" [(ngModel)]="customerJson"></textarea>
+        </mat-form-field>
+    </div>
 </div>
 <div mat-dialog-actions>
-  <span class="flex-spacer"></span>
-  <button mat-button color="warn" [mat-dialog-close]="{}" i18n="@@CANCEL">Cancel</button>
-  <button mat-button color="accent" (click)="saveAsFeMale()">
-    <fa-icon [icon]="faFemale" size="lg"></fa-icon>&nbsp;&nbsp;&nbsp;
-    <span i18n="@@SAVE_AS_FEMALE">Save as Female</span>
-  </button>
-  <button mat-button color="primary" (click)="saveAsMale()">
-    <fa-icon [icon]="faMale" size="lg"></fa-icon>&nbsp;&nbsp;&nbsp;
-    <span i18n="@@SAVE_AS_MALE">Save as Male</span>
-  </button>
-  <button mat-button (click)="import()" *ngIf="importEnabled">Import</button>
+    <span class="flex-spacer"></span>
+    <button mat-button color="warn" [mat-dialog-close]="{}" i18n="@@CANCEL">Cancel</button>
+    <button mat-button color="accent" (click)="saveAsFeMale()">
+        <fa-icon [icon]="faFemale" size="lg"></fa-icon>&nbsp;&nbsp;&nbsp;
+        <span i18n="@@SAVE_AS_FEMALE">Save as Female</span>
+    </button>
+    <button mat-button color="primary" (click)="saveAsMale()">
+        <fa-icon [icon]="faMale" size="lg"></fa-icon>&nbsp;&nbsp;&nbsp;
+        <span i18n="@@SAVE_AS_MALE">Save as Male</span>
+    </button>
+    <button mat-button (click)="import()" *ngIf="importEnabled">Import</button>
 </div>

@@ -6,6 +6,7 @@ import {FormControl} from '@angular/forms';
 import {PlaceService} from '../../../core/services/place.service';
 import {flatMap} from 'rxjs/operators';
 import {faFemale, faMale} from '@fortawesome/free-solid-svg-icons';
+import {EMPTY, of} from 'rxjs';
 
 @Component({
   templateUrl: './customer-edit-dialog.component.html',
@@ -53,7 +54,11 @@ export class CustomerEditDialogComponent implements OnInit {
     this.addressForm.valueChanges.pipe(
       flatMap((text: string) => {
           this.customer.address = text;
-          return this.placeService.findAddress(text);
+          if (!!text && !!text.length) {
+            return this.placeService.findAddress(text);
+          } else {
+            return of([]);
+          }
         }
       ),
     ).subscribe((addresses: any) => {
