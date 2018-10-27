@@ -43,7 +43,7 @@ export class CustomersViewComponent implements OnInit {
 
   queryFn: (ref: CollectionReference) => Query = (ref: CollectionReference) => {
     return ref.orderBy('lastAccessDate', 'asc');
-  };
+  }
 
   ngOnInit() {
     this.dynTabService.selectFirstTab(NavLinkType.CUSTOMERS);
