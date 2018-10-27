@@ -1,8 +1,7 @@
 import {Component} from '@angular/core';
-import {AngularFireAuth} from 'angularfire2/auth';
+import {AngularFireAuth} from '@angular/fire/auth';
 import {auth} from 'firebase';
 import {Router} from '@angular/router';
-import UserCredential = firebase.auth.UserCredential;
 
 @Component({
   selector: 'app-anonymous-board',
@@ -18,7 +17,7 @@ export class AnonymousBoardComponent {
   }
 
   login() {
-    this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider()).then((value: UserCredential) => {
+    this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider()).then((value: auth.UserCredential) => {
       if (value.user) {
         this.router.navigate(['']);
       }
