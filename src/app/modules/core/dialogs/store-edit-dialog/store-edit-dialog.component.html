@@ -1,0 +1,26 @@
+<p></p><h1 mat-dialog-title i18n="@@EDIT_OR_CREATE_STORE">{'' + !!store.id, select, true {Edit} false {Create}} customer</h1>
+<div mat-dialog-content fxLayout="column">
+  <div fxLayout="row" fxLayoutGap="10px">
+    <mat-form-field fxFlex>
+      <input matInput i18n-placeholder="@@NAME" placeholder="Name" [(ngModel)]="store.name">
+    </mat-form-field>
+  </div>
+  <div fxLayout="row" fxLayoutGap="10px">
+    <mat-form-field fxFlex>
+      <input matInput i18n-placeholder="@@ADDRESS" placeholder="Address"
+             [formControl]="addressForm" [matAutocomplete]="auto">
+    </mat-form-field>
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let address of addresses" [value]="address.description">{{address.description}}
+      </mat-option>
+    </mat-autocomplete>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <span class="flex-spacer"></span>
+  <button mat-button color="primary" (click)="save()">
+    <fa-icon [icon]="faSave" size="lg"></fa-icon>&nbsp;&nbsp;&nbsp;
+    <span i18n="@@SAVE">Save</span>
+  </button>
+  <button mat-button color="warn" [mat-dialog-close]="{}" i18n="@@CANCEL">Cancel</button>
+</div>
