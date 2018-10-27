@@ -50,7 +50,6 @@
     "@hhangular/common": "^1.0.20",
     "@types/algoliasearch": "^3.27.8",
     "algoliasearch": "^3.30.0",
-    "angular-instantsearch": "^2.0.4",
     "core-js": "^2.5.7",
     "firebase": "^5.5.5",
     "hammerjs": "^2.0.8",

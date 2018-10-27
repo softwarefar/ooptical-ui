@@ -9,7 +9,6 @@ import {SHARED_COMPONENTS} from './components';
 import {SHARED_PIPES} from './pipes';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {RouterModule} from '@angular/router';
-import { NgAisModule } from 'angular-instantsearch';
 import {AngularFireModule} from '@angular/fire';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {AngularFireAuthModule} from '@angular/fire/auth';
@@ -20,7 +19,7 @@ import {fas} from '@fortawesome/free-solid-svg-icons';
 import {far} from '@fortawesome/free-regular-svg-icons';
 import {fab} from '@fortawesome/free-brands-svg-icons';
 
-const FIRE_BASE  = [
+const FIRE_BASE = [
   AngularFireModule,
   AngularFirestoreModule,
   AngularFireAuthModule,
@@ -43,7 +42,6 @@ library.add(fas, far, fab);
     MaterialModule,
     RouterModule,
     FontAwesomeModule,
-    NgAisModule,
     FIRE_BASE,
     SHARED_COMPONENTS,
     SHARED_PIPES
@@ -57,7 +55,6 @@ library.add(fas, far, fab);
     MaterialModule,
     RouterModule,
     FontAwesomeModule,
-    NgAisModule,
     FIRE_BASE,
   ],
   providers: [],
