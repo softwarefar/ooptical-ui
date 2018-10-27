@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
 import {DynTabService} from '../../../core/services/dyn-tab-service';
-import {AngularFirestore} from 'angularfire2/firestore';
 import {flatMap} from 'rxjs/operators';
 import {NavLink} from '../../../core/models/nav-link/nav-link';
 import {NavLinkType} from '../../../core/models/nav-link/nav-link-type';
@@ -28,7 +27,7 @@ export class CustomerViewComponent extends AbstractNavigableComponent<Customer> 
   ngOnInit() {
     this.route.params.pipe(
       flatMap((params: Params) => {
-        return this.customerService.getCustomer(params.id);
+        return this.customerService.getCustomer(params.customerId);
       })
     ).subscribe((customer: Partial<Customer> | undefined) => {
       if (!!customer) {
@@ -44,7 +43,7 @@ export class CustomerViewComponent extends AbstractNavigableComponent<Customer> 
     return {
       type: NavLinkType.CUSTOMER,
       label: `${customer.lastName} - ${customer.firstName}`,
-      path: `/customers/${customer.id}`
+      path: `customers/${customer.id}`
     };
   }
 

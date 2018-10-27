@@ -1,16 +1,17 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    <span><i class="fas fa-glasses"></i>&nbsp;Optique Morand</span>
+    <span>
+      <fa-icon [icon]="['fas', 'glasses']"></fa-icon>
+      &nbsp;&nbsp;Optique Morand
+    </span>
     <span class="flex-spacer"></span>
-    <button mat-button (click)="logout()">
-      <i class="fas fa-sign-out-alt"></i>&nbsp;{{user?.displayName}}
-    </button>
+    <app-user-button></app-user-button>
     <app-store-selector></app-store-selector>
     <app-language-selector></app-language-selector>
   </mat-toolbar-row>
 </mat-toolbar>
 <div fxFlex fxLayout="column">
-  <mat-tab-group (selectedIndexChange)="selectedIndexChange($event)" *ngIf="user"
+  <mat-tab-group (selectedIndexChange)="selectedIndexChange($event)"
                  [selectedIndex]="selectedIndex">
     <mat-tab *ngFor="let link of dynTabService.navLinks">
       <ng-template mat-tab-label>
@@ -23,7 +24,7 @@
         </ng-container>
         <button mat-icon-button *ngIf="NavLinkCloseable[link.type]"
                 (click)="closeTab($event, link)">
-          <i class="fas fa-times"></i>
+          <fa-icon [icon]="['fas', 'times']"></fa-icon>
         </button>
       </ng-template>
     </mat-tab>

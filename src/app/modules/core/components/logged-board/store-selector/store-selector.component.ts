@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {StoreService} from '../../../services/store.service';
 import {FormControl} from '@angular/forms';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-store-selector',
@@ -14,19 +15,20 @@ export class StoreSelectorComponent implements OnInit {
   storeControl: FormControl = new FormControl();
 
   constructor(
-    private storeService: StoreService
+    private storeService: StoreService,
+    private router: Router
   ) {
   }
 
   ngOnInit() {
-    this.storeService.getStores().subscribe((stores: Store[]) => {
+    this.storeService.getAllowedStores().subscribe((stores: Store[]) => {
       this.stores = stores;
       if (!!stores.length) {
         this.storeControl.setValue(stores[0]);
       }
     });
     this.storeControl.valueChanges.subscribe((store: Store) => {
-      console.log(store);
+      this.router.navigate([`/${store.id}`]);
     });
   }
 

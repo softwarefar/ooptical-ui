@@ -8,12 +8,17 @@ import {MaterialModule} from './mat.module';
 import {SHARED_COMPONENTS} from './components';
 import {SHARED_PIPES} from './pipes';
 import {FlexLayoutModule} from '@angular/flex-layout';
-import {AngularFireModule} from 'angularfire2';
-import {AngularFirestoreModule} from 'angularfire2/firestore';
-import {AngularFireAuthModule} from 'angularfire2/auth';
-import {AngularFireStorageModule} from 'angularfire2/storage';
 import {RouterModule} from '@angular/router';
 import { NgAisModule } from 'angular-instantsearch';
+import {AngularFireModule} from '@angular/fire';
+import {AngularFirestoreModule} from '@angular/fire/firestore';
+import {AngularFireAuthModule} from '@angular/fire/auth';
+import {AngularFireStorageModule} from '@angular/fire/storage';
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import {library} from '@fortawesome/fontawesome-svg-core';
+import {fas} from '@fortawesome/free-solid-svg-icons';
+import {far} from '@fortawesome/free-regular-svg-icons';
+import {fab} from '@fortawesome/free-brands-svg-icons';
 
 const FIRE_BASE  = [
   AngularFireModule,
@@ -22,6 +27,7 @@ const FIRE_BASE  = [
   AngularFireStorageModule,
 ];
 
+library.add(fas, far, fab);
 
 @NgModule({
   declarations: [
@@ -36,6 +42,7 @@ const FIRE_BASE  = [
     HttpClientModule,
     MaterialModule,
     RouterModule,
+    FontAwesomeModule,
     NgAisModule,
     FIRE_BASE,
     SHARED_COMPONENTS,
@@ -49,6 +56,7 @@ const FIRE_BASE  = [
     HttpClientModule,
     MaterialModule,
     RouterModule,
+    FontAwesomeModule,
     NgAisModule,
     FIRE_BASE,
   ],
