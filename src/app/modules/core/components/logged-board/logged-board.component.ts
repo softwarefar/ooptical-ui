@@ -1,7 +1,7 @@
 import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {DynTabService} from '../../services/dyn-tab-service';
 import {ActivatedRoute, Event, NavigationEnd, NavigationExtras, Router, RouterEvent} from '@angular/router';
-import {AngularFireAuth} from '@angular/fire/auth';
+import {AngularFireAuth} from 'angularfire2/auth';
 import {User} from 'firebase';
 import {filter, first, map} from 'rxjs/operators';
 import {NavLink} from '../../models/nav-link/nav-link';

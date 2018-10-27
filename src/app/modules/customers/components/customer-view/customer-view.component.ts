@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
 import {DynTabService} from '../../../core/services/dyn-tab-service';
-import {AngularFirestore} from '@angular/fire/firestore';
+import {AngularFirestore} from 'angularfire2/firestore';
 import {flatMap} from 'rxjs/operators';
 import {NavLink} from '../../../core/models/nav-link/nav-link';
 import {NavLinkType} from '../../../core/models/nav-link/nav-link-type';
