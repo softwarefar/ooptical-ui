@@ -32,7 +32,7 @@ export class StoreMemberGuard implements CanActivate, CanActivateChild {
       map((stores: string[]) => {
         const valid = !!stores.length && stores.includes(route.params.storeId);
         if (!valid) {
-          this.router.navigate(['/']);
+          this.router.navigate(['']);
         }
         return valid;
       })

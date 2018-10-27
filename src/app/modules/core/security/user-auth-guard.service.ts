@@ -20,7 +20,7 @@ export class UserAuthGuard implements CanActivate {
     return this.roleService.hasRole('user').pipe(
       tap((isUser: boolean) => {
         if (!isUser) {
-          this.router.navigate(['/login']).then();
+          this.router.navigate(['login']).then();
         }
       })
     );

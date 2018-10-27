@@ -29,7 +29,7 @@ export class AdminAuthGuard implements CanActivate, CanActivateChild {
     return this.roleService.hasRole('admin').pipe(
       tap((isAdmin: boolean) => {
         if (!isAdmin) {
-          this.router.navigate(['/login']).then();
+          this.router.navigate(['login']).then();
         }
       })
     );

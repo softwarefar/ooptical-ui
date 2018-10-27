@@ -3,6 +3,7 @@ import {StoreService} from '../../services/store.service';
 import {RoleService} from '../../services/role.service';
 import {Router} from '@angular/router';
 import {flatMap} from 'rxjs/operators';
+import {faStore} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-select-store',
@@ -10,6 +11,8 @@ import {flatMap} from 'rxjs/operators';
   styleUrls: ['./select-store.component.css']
 })
 export class SelectStoreComponent implements OnInit {
+
+  faStore = faStore;
 
   stores: Store[];
   admin = false;

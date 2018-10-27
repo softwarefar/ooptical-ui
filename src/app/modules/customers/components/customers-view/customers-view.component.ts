@@ -10,6 +10,7 @@ import {FormControl} from '@angular/forms';
 import {CollectionReference, Query} from '@angular/fire/firestore';
 import {DynTabService} from '../../../core/services/dyn-tab-service';
 import {NavLinkType} from '../../../core/models/nav-link/nav-link-type';
+import {faFemale, faMale} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-customers-view',
@@ -25,6 +26,9 @@ import {NavLinkType} from '../../../core/models/nav-link/nav-link-type';
   ],
 })
 export class CustomersViewComponent implements OnInit {
+  faFemale = faFemale;
+  faMale = faMale;
+
   searchForm: FormControl = new FormControl();
 
   constructor(

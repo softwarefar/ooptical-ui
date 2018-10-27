@@ -46,11 +46,11 @@
   <span class="flex-spacer"></span>
   <button mat-button color="warn" [mat-dialog-close]="{}" i18n="@@CANCEL">Cancel</button>
   <button mat-button color="accent" (click)="saveAsFeMale()">
-    <fa-icon [icon]="['fas', 'female']" size="lg"></fa-icon>&nbsp;&nbsp;&nbsp;
+    <fa-icon [icon]="faFemale" size="lg"></fa-icon>&nbsp;&nbsp;&nbsp;
     <span i18n="@@SAVE_AS_FEMALE">Save as Female</span>
   </button>
   <button mat-button color="primary" (click)="saveAsMale()">
-    <fa-icon [icon]="['fas', 'male']" size="lg"></fa-icon>&nbsp;&nbsp;&nbsp;
+    <fa-icon [icon]="faMale" size="lg"></fa-icon>&nbsp;&nbsp;&nbsp;
     <span i18n="@@SAVE_AS_MALE">Save as Male</span>
   </button>
   <button mat-button (click)="import()" *ngIf="importEnabled">Import</button>

@@ -5,12 +5,16 @@ import {Moment} from 'moment';
 import {FormControl} from '@angular/forms';
 import {PlaceService} from '../../../core/services/place.service';
 import {flatMap} from 'rxjs/operators';
+import {faFemale, faMale} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   templateUrl: './customer-edit-dialog.component.html',
   styleUrls: ['./customer-edit-dialog.component.css']
 })
 export class CustomerEditDialogComponent implements OnInit {
+  faFemale = faFemale;
+  faMale = faMale;
+
   importEnabled: boolean = true;
   customerJson: string = '';
   /*`${JSON.stringify({

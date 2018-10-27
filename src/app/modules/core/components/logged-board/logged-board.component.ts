@@ -4,12 +4,15 @@ import {ActivatedRoute, Event, NavigationEnd, NavigationExtras, Router, RouterEv
 import {filter, first, map} from 'rxjs/operators';
 import {NavLink} from '../../models/nav-link/nav-link';
 import {NavLinkCloseable} from '../../models/nav-link/nav-link-closeable';
+import {faGlasses, faTimes} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   templateUrl: './logged-board.component.html',
   styleUrls: ['./logged-board.component.css']
 })
 export class LoggedBoardComponent implements OnInit {
+  faGlasses = faGlasses;
+  faTimes = faTimes;
 
   constructor(
     public dynTabService: DynTabService,

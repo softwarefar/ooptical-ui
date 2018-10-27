@@ -17,8 +17,8 @@
             <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
             <td mat-cell *matCellDef="let element">
         <span [ngSwitch]="element.gender">
-            <fa-icon [icon]="['fas', 'female']" size="2x" *ngSwitchCase="'FEMALE'" class="female"></fa-icon>
-            <fa-icon [icon]="['fas', 'male']" size="2x" *ngSwitchDefault  class="male"></fa-icon>
+            <fa-icon [icon]="faFemale" size="2x" *ngSwitchCase="'FEMALE'" class="female"></fa-icon>
+            <fa-icon [icon]="faMale" size="2x" *ngSwitchDefault  class="male"></fa-icon>
         </span>
             </td>
         </ng-container>

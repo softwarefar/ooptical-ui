@@ -1,7 +1,7 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
     <span>
-      <fa-icon [icon]="['fas', 'glasses']"></fa-icon>
+      <fa-icon [icon]="faGlasses"></fa-icon>
       &nbsp;&nbsp;Optique Morand
     </span>
     <span class="flex-spacer"></span>
@@ -24,7 +24,7 @@
         </ng-container>
         <button mat-icon-button *ngIf="NavLinkCloseable[link.type]"
                 (click)="closeTab($event, link)">
-          <fa-icon [icon]="['fas', 'times']"></fa-icon>
+          <fa-icon [icon]="faTimes"></fa-icon>
         </button>
       </ng-template>
     </mat-tab>

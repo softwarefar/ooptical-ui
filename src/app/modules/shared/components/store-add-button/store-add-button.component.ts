@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {MatDialog} from '@angular/material';
 import {StoreService} from '../../../core/services/store.service';
+import {faPlus} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-store-add-button',
@@ -8,6 +9,8 @@ import {StoreService} from '../../../core/services/store.service';
   styleUrls: ['./store-add-button.component.css']
 })
 export class StoreAddButtonComponent {
+
+  faPlus = faPlus;
 
   constructor(
     private dialog: MatDialog,

@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {User} from 'firebase';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {Router} from '@angular/router';
+import {faSignOutAlt} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-user-button',
@@ -9,6 +10,8 @@ import {Router} from '@angular/router';
   styleUrls: ['./user-button.component.css']
 })
 export class UserButtonComponent implements OnInit {
+
+  faSignOutAlt = faSignOutAlt;
 
   constructor(
     private router: Router,

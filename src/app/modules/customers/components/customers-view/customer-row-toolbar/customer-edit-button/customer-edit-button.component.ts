@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Output} from '@angular/core';
+import {faPencilAlt} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-customer-edit-button',
@@ -6,6 +7,8 @@ import {Component, EventEmitter, Output} from '@angular/core';
   styleUrls: ['./customer-edit-button.component.css']
 })
 export class CustomerEditButtonComponent {
+
+  faPencilAlt = faPencilAlt;
 
   @Output()
   editRequest: EventEmitter<void> = new EventEmitter<void>();

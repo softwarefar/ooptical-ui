@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {MatDialog} from '@angular/material';
 import {CustomerEditDialogComponent} from '../../../dialogs/customer-edit-dialog/customer-edit-dialog.component';
 import {CustomerService} from '../../../../core/services/customer.service';
+import {faPlus} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-customer-add-button',
@@ -9,6 +10,8 @@ import {CustomerService} from '../../../../core/services/customer.service';
   styleUrls: ['./customer-add-button.component.css']
 })
 export class CustomerAddButtonComponent {
+
+  faPlus = faPlus;
 
   constructor(
     private dialog: MatDialog,

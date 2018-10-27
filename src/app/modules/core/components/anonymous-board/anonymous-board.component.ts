@@ -7,6 +7,7 @@ import {flatMap, map} from 'rxjs/operators';
 import {RoleService} from '../../services/role.service';
 import {StoreService} from '../../services/store.service';
 import {of} from 'rxjs';
+import {faGoogle} from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'app-anonymous-board',
@@ -14,6 +15,7 @@ import {of} from 'rxjs';
   styleUrls: ['./anonymous-board.component.css']
 })
 export class AnonymousBoardComponent {
+  faGoogle = faGoogle;
 
   constructor(
     private router: Router,
