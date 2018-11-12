@@ -11,4 +11,5 @@ interface Customer {
   lastAccessDate: number;
   creationDate: number;
   updateDate: number;
+  stores: string[];
 }

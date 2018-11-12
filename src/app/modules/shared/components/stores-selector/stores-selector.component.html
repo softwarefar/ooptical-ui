@@ -1,0 +1,24 @@
+<mat-form-field fxFlex>
+  <mat-chip-list #chipList>
+    <mat-chip
+            *ngFor="let store of selectedStores"
+            [removable]="true"
+            (removed)="removeStore(store)">
+      {{store}}
+      <fa-icon [icon]="faTimes"></fa-icon>
+    </mat-chip>
+    <input placeholder="Enter store" i18n-placeholder="@@ENTER_STORE"
+           #storeInput
+           [formControl]="storeCtrl"
+           [matAutocomplete]="auto"
+           [matChipInputFor]="chipList"
+           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+           [matChipInputAddOnBlur]="true"
+           (matChipInputTokenEnd)="addStore($event)">
+  </mat-chip-list>
+  <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+    <mat-option *ngFor="let store of filteredStores | async" [value]="store.id">
+      {{store.name}}
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>

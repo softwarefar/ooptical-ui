@@ -6,7 +6,8 @@ import {FormControl} from '@angular/forms';
 import {PlaceService} from '../../../core/services/place.service';
 import {flatMap} from 'rxjs/operators';
 import {faFemale, faMale} from '@fortawesome/free-solid-svg-icons';
-import {EMPTY, of} from 'rxjs';
+import {of} from 'rxjs';
+import {StoreService} from '../../../core/services/store.service';
 
 @Component({
   templateUrl: './customer-edit-dialog.component.html',
@@ -34,13 +35,15 @@ export class CustomerEditDialogComponent implements OnInit {
   addressForm: FormControl = new FormControl();
 
   addresses?: any[];
+  stores: Store[] = [];
 
   constructor(
     private ref: ChangeDetectorRef,
     private placeService: PlaceService,
+    private storeService: StoreService,
     public dialogRef: MatDialogRef<CustomerEditDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: CustomerEditData) {
-    this.customer = Object.assign({gender: 'MALE'}, data.customer);
+    this.customer = Object.assign({gender: 'MALE', stores:[]}, data.customer);
 
     if (!!this.customer.address) {
       this.addressForm.setValue(this.customer.address);
@@ -67,6 +70,9 @@ export class CustomerEditDialogComponent implements OnInit {
     });
     this.birthDateForm.valueChanges.subscribe((date: Moment) => {
       this.customer.birthDate = +date.format('x');
+    });
+    this.storeService.getAllowedStores().subscribe((stores: Store[]) => {
+      this.stores = stores;
     });
   }
 

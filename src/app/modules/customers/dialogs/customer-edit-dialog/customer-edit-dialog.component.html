@@ -2,7 +2,8 @@
 <div mat-dialog-content fxLayout="column">
     <div fxLayout="row" fxLayoutGap="10px">
         <mat-form-field fxFlex>
-            <input matInput i18n-placeholder="@@FIRST_NAME" placeholder="FirstName" [(ngModel)]="customer.firstName">
+            <input matInput i18n-placeholder="@@FIRST_NAME" placeholder="FirstName"
+                   [(ngModel)]="customer.firstName">
         </mat-form-field>
         <mat-form-field fxFlex>
             <input matInput i18n-placeholder="@@LAST_NAME" placeholder="LastName" [(ngModel)]="customer.lastName">
@@ -33,6 +34,7 @@
             <input matInput i18n-placeholder="@@EMAIL" placeholder="Email" [(ngModel)]="customer.email">
         </mat-form-field>
     </div>
+    <app-stores-selector fxLayout="row" fxLayoutGap="10px" [selectedStores]="customer.stores"></app-stores-selector>
     <div fxLayout="row" fxLayoutGap="10px">
         <mat-form-field fxFlex>
             <textarea rows="5" matInput i18n-placeholder="@@DETAILS" placeholder="Details"

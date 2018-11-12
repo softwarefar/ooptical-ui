@@ -13,7 +13,7 @@
     <div fxLayoutAlign="center">
         <mat-nav-list fxFlex="30">
             <a mat-list-item *ngFor="let store of stores" routerLink="/{{store.id}}">
-                <fa-icon [icon]="faStore"></fa-icon>
+                <fa-icon mat-list-icon [icon]="faStore"></fa-icon>
                 <h4 mat-line>{{store.name}}</h4>
                 <p mat-line> {{store.address}} </p>
             </a>

@@ -1,0 +1,3 @@
+interface StoreEditResult {
+  store: Store;
+}
