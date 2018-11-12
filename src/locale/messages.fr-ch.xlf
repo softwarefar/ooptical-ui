@@ -4,103 +4,292 @@
     <body>
       <trans-unit id="CUSTOMERS" datatype="html">
         <source>Customers</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modules/core/components/logged-board/logged-board.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
         <target>Clients</target>
       </trans-unit>
       <trans-unit id="PRODUCTS" datatype="html">
         <source>Products</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modules/core/components/logged-board/logged-board.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
         <target>Produits</target>
       </trans-unit>
       <trans-unit id="STORES" datatype="html">
         <source>Stores</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modules/core/components/logged-board/logged-board.component.html</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
         <target>Magasins</target>
       </trans-unit>
       <trans-unit id="PROVIDERS" datatype="html">
         <source>Providers</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modules/core/components/logged-board/logged-board.component.html</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
         <target>Fournisseurs</target>
       </trans-unit>
       <trans-unit id="LOGIN_WITH_GOOGLE" datatype="html">
         <source>Login with google</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modules/core/components/anonymous-board/anonymous-board.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
         <target>Se logger avec google</target>
       </trans-unit>
       <trans-unit id="SELECT_STORE" datatype="html">
         <source>Select store</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modules/core/components/select-store/select-store.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
         <target>Sélection du magasin</target>
       </trans-unit>
       <trans-unit id="STORE" datatype="html">
         <source>Store</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modules/core/components/logged-board/store-selector/store-selector.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
         <target>Magasin</target>
+      </trans-unit>
+      <trans-unit id="EDIT_OR_CREATE_STORE" datatype="html">
+        <source><x id="ICU" equiv-text="{&apos;&apos; + !!store.id, select, true {...} false {...}}"/> customer</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modules/core/dialogs/store-edit-dialog/store-edit-dialog.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+        <target><x id="ICU" equiv-text="{&apos;&apos; + !!store.id, select, true {...} false {...}}"/> customer</target>
+      </trans-unit>
+      <trans-unit id="4da2711035177d71171b0d6f82f9c97969eaf4f1" datatype="html">
+        <source>{VAR_SELECT, select, true {Edit} false {Create} }</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modules/core/dialogs/store-edit-dialog/store-edit-dialog.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+        <target>{VAR_SELECT, select, true {Editer} false {Créer} }</target>
+      </trans-unit>
+      <trans-unit id="NAME" datatype="html">
+        <source>Name</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modules/core/dialogs/store-edit-dialog/store-edit-dialog.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+        <target>Nom</target>
+      </trans-unit>
+      <trans-unit id="ADDRESS" datatype="html">
+        <source>Address</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modules/core/dialogs/store-edit-dialog/store-edit-dialog.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modules/customers/dialogs/customer-edit-dialog/customer-edit-dialog.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modules/customers/components/customers-view/customers-view.component.html</context>
+          <context context-type="linenumber">47</context>
+        </context-group>
+        <target>Adresse</target>
+      </trans-unit>
+      <trans-unit id="SAVE" datatype="html">
+        <source>Save</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modules/core/dialogs/store-edit-dialog/store-edit-dialog.component.html</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+        <target>Sauvegarder</target>
+      </trans-unit>
+      <trans-unit id="CANCEL" datatype="html">
+        <source>Cancel</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modules/core/dialogs/store-edit-dialog/store-edit-dialog.component.html</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modules/customers/dialogs/customer-edit-dialog/customer-edit-dialog.component.html</context>
+          <context context-type="linenumber">52</context>
+        </context-group>
+        <target>Annuler</target>
       </trans-unit>
       <trans-unit id="ADD_STORE" datatype="html">
         <source>Add store</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modules/shared/components/store-add-button/store-add-button.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
         <target>Ajouter un magasin</target>
+      </trans-unit>
+      <trans-unit id="ENTER_STORE" datatype="html">
+        <source>Enter store</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modules/shared/components/stores-selector/stores-selector.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+        <target>Saisir un magasin</target>
+      </trans-unit>
+      <trans-unit id="EDIT_OR_CREATE_CUSTOMER" datatype="html">
+        <source><x id="ICU" equiv-text="{&apos;&apos; + !!customer.id, select, true {...} false {...}}"/> customer</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modules/customers/dialogs/customer-edit-dialog/customer-edit-dialog.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+        <target><x id="ICU" equiv-text="{&apos;&apos; + !!customer.id, select, true {...} false {...}}"/> customer</target>
+      </trans-unit>
+      <trans-unit id="92fde528214d147576316191590445f894eac5ee" datatype="html">
+        <source>{VAR_SELECT, select, true {Edit} false {Create} }</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modules/customers/dialogs/customer-edit-dialog/customer-edit-dialog.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+        <target>{VAR_SELECT, select, true {Editer} false {Créer} }</target>
       </trans-unit>
       <trans-unit id="FIRST_NAME" datatype="html">
         <source>FirstName</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modules/customers/dialogs/customer-edit-dialog/customer-edit-dialog.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modules/customers/components/customers-view/customers-view.component.html</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
         <target>Prénom</target>
       </trans-unit>
       <trans-unit id="LAST_NAME" datatype="html">
         <source>LastName</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modules/customers/dialogs/customer-edit-dialog/customer-edit-dialog.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modules/customers/components/customers-view/customers-view.component.html</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
         <target>Nom</target>
       </trans-unit>
       <trans-unit id="BIRTH_DATE" datatype="html">
         <source>BirthDate</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modules/customers/dialogs/customer-edit-dialog/customer-edit-dialog.component.html</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modules/customers/components/customers-view/customers-view.component.html</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
         <target>Anniversaire</target>
-      </trans-unit>
-      <trans-unit id="ADDRESS" datatype="html">
-        <source>Address</source>
-        <target>Adresse</target>
       </trans-unit>
       <trans-unit id="PHONE_NUMBER" datatype="html">
         <source>Phone number</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modules/customers/dialogs/customer-edit-dialog/customer-edit-dialog.component.html</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modules/customers/components/customers-view/customers-view.component.html</context>
+          <context context-type="linenumber">53</context>
+        </context-group>
         <target>Numéro</target>
       </trans-unit>
       <trans-unit id="EMAIL" datatype="html">
         <source>Email</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modules/customers/dialogs/customer-edit-dialog/customer-edit-dialog.component.html</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modules/customers/components/customers-view/customers-view.component.html</context>
+          <context context-type="linenumber">59</context>
+        </context-group>
         <target>Email</target>
       </trans-unit>
       <trans-unit id="DETAILS" datatype="html">
         <source>Details</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modules/customers/dialogs/customer-edit-dialog/customer-edit-dialog.component.html</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
         <target>Détails</target>
-      </trans-unit>
-      <trans-unit id="CANCEL" datatype="html">
-        <source>Cancel</source>
-        <target>Annuler</target>
       </trans-unit>
       <trans-unit id="SAVE_AS_FEMALE" datatype="html">
         <source>Save as Female</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modules/customers/dialogs/customer-edit-dialog/customer-edit-dialog.component.html</context>
+          <context context-type="linenumber">55</context>
+        </context-group>
         <target>Sauvegarder comme femme</target>
       </trans-unit>
       <trans-unit id="SAVE_AS_MALE" datatype="html">
         <source>Save as Male</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modules/customers/dialogs/customer-edit-dialog/customer-edit-dialog.component.html</context>
+          <context context-type="linenumber">59</context>
+        </context-group>
         <target>Sauvegarder comme homme</target>
       </trans-unit>
       <trans-unit id="SEARCH_CUSTOMER" datatype="html">
         <source>Search customer</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modules/customers/components/customers-view/customers-view.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
         <target>Recherche d'un client</target>
       </trans-unit>
       <trans-unit id="ID" datatype="html">
         <source>Id</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modules/customers/components/customers-view/customers-view.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
         <target>Id</target>
       </trans-unit>
       <trans-unit id="LAST_ACCESS" datatype="html">
         <source>Last access</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modules/customers/components/customers-view/customers-view.component.html</context>
+          <context context-type="linenumber">65</context>
+        </context-group>
         <target>Dernier accès</target>
       </trans-unit>
       <trans-unit id="ADD_CUSTOMER" datatype="html">
         <source>Add customer</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modules/customers/components/customers-view/customer-add-button/customer-add-button.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
         <target>Ajouter un client</target>
       </trans-unit>
       <trans-unit id="DELETE_CUSTOMER" datatype="html">
         <source>Delete customer</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modules/customers/components/customers-view/customer-row-toolbar/customer-delete-button/customer-delete-button.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
         <target>Supprimer le client</target>
       </trans-unit>
       <trans-unit id="EDIT_CUSTOMER" datatype="html">
         <source>Edit customer</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modules/customers/components/customers-view/customer-row-toolbar/customer-edit-button/customer-edit-button.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
         <target>Editer le client</target>
       </trans-unit>
       <trans-unit id="OPEN_CUSTOMER" datatype="html">
         <source>Open customer</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/modules/customers/components/customers-view/customer-row-toolbar/customer-view-button/customer-view-button.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
         <target>Détail du client</target>
-      </trans-unit></body>
+      </trans-unit>
+    </body>
   </file>
 </xliff>
